@@ -42,5 +42,11 @@ public class FormInicioSesionBean implements Serializable {
     public String enviar() {
         return "Enviado";
     }
-
+    public String ingresar(){
+        return "Ingresar";
+    }
+    
+    public String actualizar(){
+        return "Actualizar";
+    }
 }

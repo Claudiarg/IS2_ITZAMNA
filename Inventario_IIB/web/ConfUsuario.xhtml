@@ -15,6 +15,15 @@
                     <h:outputText value="Bienvenid@ #{InicioSesion.inputText}"/>
                 </h:column>
             </h:panelGrid>
+            <h:column>
+                <h:commandButton value="Ingresar nuevo equipo al sistema" action="#{InicioSesion.ingresar()}">                        
+                </h:commandButton>
+            </h:column>
+            <h:column>
+                <h:commandButton value="Actualizar equipo en sistema" action="#{InicioSesion.actualizar()}">                        
+                </h:commandButton>
+            </h:column>
+
         </h:form>
     </h:body>
 </html>
