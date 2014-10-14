@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Connection;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,45 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "TipoUsuario")
+@Table(name = "Modelo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TipoUsuario.findAll", query = "SELECT t FROM TipoUsuario t"),
-    @NamedQuery(name = "TipoUsuario.findByIdTipoUsuario", query = "SELECT t FROM TipoUsuario t WHERE t.idTipoUsuario = :idTipoUsuario"),
-    @NamedQuery(name = "TipoUsuario.findByDescripcion", query = "SELECT t FROM TipoUsuario t WHERE t.descripcion = :descripcion")})
-public class TipoUsuario implements Serializable {
+    @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m")})
+public class Modelo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idTipoUsuario")
-    private Integer idTipoUsuario;
+    @Column(name = "idModelo", nullable = false)
+    private Integer idModelo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "Descripcion")
+    @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
-    private Collection<Usuario> usuarioCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modelo")
+    private Collection<Equipo> equipoCollection;
 
-    public TipoUsuario() {
+    public Modelo() {
     }
 
-    public TipoUsuario(Integer idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public Modelo(Integer idModelo) {
+        this.idModelo = idModelo;
     }
 
-    public TipoUsuario(Integer idTipoUsuario, String descripcion) {
-        this.idTipoUsuario = idTipoUsuario;
+    public Modelo(Integer idModelo, String descripcion) {
+        this.idModelo = idModelo;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdTipoUsuario() {
-        return idTipoUsuario;
+    public Integer getIdModelo() {
+        return idModelo;
     }
 
-    public void setIdTipoUsuario(Integer idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setIdModelo(Integer idModelo) {
+        this.idModelo = idModelo;
     }
 
     public String getDescripcion() {
@@ -79,29 +77,29 @@ public class TipoUsuario implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
+    public Collection<Equipo> getEquipoCollection() {
+        return equipoCollection;
     }
 
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
+    public void setEquipoCollection(Collection<Equipo> equipoCollection) {
+        this.equipoCollection = equipoCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTipoUsuario != null ? idTipoUsuario.hashCode() : 0);
+        hash += (idModelo != null ? idModelo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TipoUsuario)) {
+        if (!(object instanceof Modelo)) {
             return false;
         }
-        TipoUsuario other = (TipoUsuario) object;
-        if ((this.idTipoUsuario == null && other.idTipoUsuario != null) || (this.idTipoUsuario != null && !this.idTipoUsuario.equals(other.idTipoUsuario))) {
+        Modelo other = (Modelo) object;
+        if ((this.idModelo == null && other.idModelo != null) || (this.idModelo != null && !this.idModelo.equals(other.idModelo))) {
             return false;
         }
         return true;
@@ -109,7 +107,7 @@ public class TipoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Connection.TipoUsuario[ idTipoUsuario=" + idTipoUsuario + " ]";
+        return "Auth.Modelo[ idModelo=" + idModelo + " ]";
     }
     
 }

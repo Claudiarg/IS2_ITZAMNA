@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -19,6 +19,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -28,36 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Familia")
+@Table(name = "EstadoFisico")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Familia.findAll", query = "SELECT f FROM Familia f")})
-public class Familia implements Serializable {
+    @NamedQuery(name = "EstadoFisico.findAll", query = "SELECT e FROM EstadoFisico e")})
+public class EstadoFisico implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idFamilia", nullable = false)
-    private Integer idFamilia;
-    @Size(max = 45)
-    @Column(name = "Descripcion", length = 45)
+    @Column(name = "idEstadoFisico", nullable = false)
+    private Integer idEstadoFisico;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "familia")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoFisico")
     private Collection<Equipo> equipoCollection;
 
-    public Familia() {
+    public EstadoFisico() {
     }
 
-    public Familia(Integer idFamilia) {
-        this.idFamilia = idFamilia;
+    public EstadoFisico(Integer idEstadoFisico) {
+        this.idEstadoFisico = idEstadoFisico;
     }
 
-    public Integer getIdFamilia() {
-        return idFamilia;
+    public EstadoFisico(Integer idEstadoFisico, String descripcion) {
+        this.idEstadoFisico = idEstadoFisico;
+        this.descripcion = descripcion;
     }
 
-    public void setIdFamilia(Integer idFamilia) {
-        this.idFamilia = idFamilia;
+    public Integer getIdEstadoFisico() {
+        return idEstadoFisico;
+    }
+
+    public void setIdEstadoFisico(Integer idEstadoFisico) {
+        this.idEstadoFisico = idEstadoFisico;
     }
 
     public String getDescripcion() {
@@ -80,18 +88,18 @@ public class Familia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idFamilia != null ? idFamilia.hashCode() : 0);
+        hash += (idEstadoFisico != null ? idEstadoFisico.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Familia)) {
+        if (!(object instanceof EstadoFisico)) {
             return false;
         }
-        Familia other = (Familia) object;
-        if ((this.idFamilia == null && other.idFamilia != null) || (this.idFamilia != null && !this.idFamilia.equals(other.idFamilia))) {
+        EstadoFisico other = (EstadoFisico) object;
+        if ((this.idEstadoFisico == null && other.idEstadoFisico != null) || (this.idEstadoFisico != null && !this.idEstadoFisico.equals(other.idEstadoFisico))) {
             return false;
         }
         return true;
@@ -99,7 +107,7 @@ public class Familia implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Familia[ idFamilia=" + idFamilia + " ]";
+        return "Auth.EstadoFisico[ idEstadoFisico=" + idEstadoFisico + " ]";
     }
     
 }

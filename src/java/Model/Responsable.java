@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,51 +29,51 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Modelo")
+@Table(name = "Responsable")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Modelo.findAll", query = "SELECT m FROM Modelo m")})
-public class Modelo implements Serializable {
+    @NamedQuery(name = "Responsable.findAll", query = "SELECT r FROM Responsable r")})
+public class Responsable implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idModelo", nullable = false)
-    private Integer idModelo;
+    @Column(name = "idResponsable", nullable = false)
+    private Integer idResponsable;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "Descripcion", nullable = false, length = 45)
-    private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modelo")
+    @Size(min = 1, max = 50)
+    @Column(name = "NombreResponsable", nullable = false, length = 50)
+    private String nombreResponsable;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsable")
     private Collection<Equipo> equipoCollection;
 
-    public Modelo() {
+    public Responsable() {
     }
 
-    public Modelo(Integer idModelo) {
-        this.idModelo = idModelo;
+    public Responsable(Integer idResponsable) {
+        this.idResponsable = idResponsable;
     }
 
-    public Modelo(Integer idModelo, String descripcion) {
-        this.idModelo = idModelo;
-        this.descripcion = descripcion;
+    public Responsable(Integer idResponsable, String nombreResponsable) {
+        this.idResponsable = idResponsable;
+        this.nombreResponsable = nombreResponsable;
     }
 
-    public Integer getIdModelo() {
-        return idModelo;
+    public Integer getIdResponsable() {
+        return idResponsable;
     }
 
-    public void setIdModelo(Integer idModelo) {
-        this.idModelo = idModelo;
+    public void setIdResponsable(Integer idResponsable) {
+        this.idResponsable = idResponsable;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getNombreResponsable() {
+        return nombreResponsable;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setNombreResponsable(String nombreResponsable) {
+        this.nombreResponsable = nombreResponsable;
     }
 
     @XmlTransient
@@ -88,18 +88,18 @@ public class Modelo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idModelo != null ? idModelo.hashCode() : 0);
+        hash += (idResponsable != null ? idResponsable.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Modelo)) {
+        if (!(object instanceof Responsable)) {
             return false;
         }
-        Modelo other = (Modelo) object;
-        if ((this.idModelo == null && other.idModelo != null) || (this.idModelo != null && !this.idModelo.equals(other.idModelo))) {
+        Responsable other = (Responsable) object;
+        if ((this.idResponsable == null && other.idResponsable != null) || (this.idResponsable != null && !this.idResponsable.equals(other.idResponsable))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class Modelo implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Modelo[ idModelo=" + idModelo + " ]";
+        return "Auth.Responsable[ idResponsable=" + idResponsable + " ]";
     }
     
 }

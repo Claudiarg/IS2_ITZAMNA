@@ -14,10 +14,10 @@
     <body>
         <h1>Hello World!</h1>
 
-        <form action="auth" method="POST">
-            </input type="text" name="user" value="usuario">
-            </input type="password" name="password" value="contraseña">
-            </input type="submit" value="Enviar">
+        <form action="<%=request.getContextPath()%>/Controller/AuthController"  method="POST">
+            <input type="text" name="user" value="usuario"/>
+            <input type="password" name="password" value="contraseña"/>
+            <input type="submit" value="Enviar"/>
         </form>
     </body>
 </html>

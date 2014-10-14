@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,43 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Uso")
+@Table(name = "NivelObsolescencia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Uso.findAll", query = "SELECT u FROM Uso u")})
-public class Uso implements Serializable {
+    @NamedQuery(name = "NivelObsolescencia.findAll", query = "SELECT n FROM NivelObsolescencia n")})
+public class NivelObsolescencia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idUso", nullable = false)
-    private Integer idUso;
+    @Column(name = "idNivelObsolescencia", nullable = false)
+    private Integer idNivelObsolescencia;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "uso")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nivelObsolescencia")
     private Collection<Equipo> equipoCollection;
 
-    public Uso() {
+    public NivelObsolescencia() {
     }
 
-    public Uso(Integer idUso) {
-        this.idUso = idUso;
+    public NivelObsolescencia(Integer idNivelObsolescencia) {
+        this.idNivelObsolescencia = idNivelObsolescencia;
     }
 
-    public Uso(Integer idUso, String descripcion) {
-        this.idUso = idUso;
+    public NivelObsolescencia(Integer idNivelObsolescencia, String descripcion) {
+        this.idNivelObsolescencia = idNivelObsolescencia;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdUso() {
-        return idUso;
+    public Integer getIdNivelObsolescencia() {
+        return idNivelObsolescencia;
     }
 
-    public void setIdUso(Integer idUso) {
-        this.idUso = idUso;
+    public void setIdNivelObsolescencia(Integer idNivelObsolescencia) {
+        this.idNivelObsolescencia = idNivelObsolescencia;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class Uso implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idUso != null ? idUso.hashCode() : 0);
+        hash += (idNivelObsolescencia != null ? idNivelObsolescencia.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Uso)) {
+        if (!(object instanceof NivelObsolescencia)) {
             return false;
         }
-        Uso other = (Uso) object;
-        if ((this.idUso == null && other.idUso != null) || (this.idUso != null && !this.idUso.equals(other.idUso))) {
+        NivelObsolescencia other = (NivelObsolescencia) object;
+        if ((this.idNivelObsolescencia == null && other.idNivelObsolescencia != null) || (this.idNivelObsolescencia != null && !this.idNivelObsolescencia.equals(other.idNivelObsolescencia))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class Uso implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Uso[ idUso=" + idUso + " ]";
+        return "Auth.NivelObsolescencia[ idNivelObsolescencia=" + idNivelObsolescencia + " ]";
     }
     
 }

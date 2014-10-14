@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,43 +29,45 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Ubicacion")
+@Table(name = "TipoUsuario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Ubicacion.findAll", query = "SELECT u FROM Ubicacion u")})
-public class Ubicacion implements Serializable {
+    @NamedQuery(name = "TipoUsuario.findAll", query = "SELECT t FROM TipoUsuario t"),
+    @NamedQuery(name = "TipoUsuario.findByIdTipoUsuario", query = "SELECT t FROM TipoUsuario t WHERE t.idTipoUsuario = :idTipoUsuario"),
+    @NamedQuery(name = "TipoUsuario.findByDescripcion", query = "SELECT t FROM TipoUsuario t WHERE t.descripcion = :descripcion")})
+public class TipoUsuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idUbicacion", nullable = false)
-    private Integer idUbicacion;
+    @Column(name = "idTipoUsuario")
+    private Integer idTipoUsuario;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "Descripcion", nullable = false, length = 45)
+    @Column(name = "Descripcion")
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion")
-    private Collection<Equipo> equipoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuario")
+    private Collection<Usuario> usuarioCollection;
 
-    public Ubicacion() {
+    public TipoUsuario() {
     }
 
-    public Ubicacion(Integer idUbicacion) {
-        this.idUbicacion = idUbicacion;
+    public TipoUsuario(Integer idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
-    public Ubicacion(Integer idUbicacion, String descripcion) {
-        this.idUbicacion = idUbicacion;
+    public TipoUsuario(Integer idTipoUsuario, String descripcion) {
+        this.idTipoUsuario = idTipoUsuario;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdUbicacion() {
-        return idUbicacion;
+    public Integer getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setIdUbicacion(Integer idUbicacion) {
-        this.idUbicacion = idUbicacion;
+    public void setIdTipoUsuario(Integer idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     public String getDescripcion() {
@@ -77,29 +79,29 @@ public class Ubicacion implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Equipo> getEquipoCollection() {
-        return equipoCollection;
+    public Collection<Usuario> getUsuarioCollection() {
+        return usuarioCollection;
     }
 
-    public void setEquipoCollection(Collection<Equipo> equipoCollection) {
-        this.equipoCollection = equipoCollection;
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
+        this.usuarioCollection = usuarioCollection;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idUbicacion != null ? idUbicacion.hashCode() : 0);
+        hash += (idTipoUsuario != null ? idTipoUsuario.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Ubicacion)) {
+        if (!(object instanceof TipoUsuario)) {
             return false;
         }
-        Ubicacion other = (Ubicacion) object;
-        if ((this.idUbicacion == null && other.idUbicacion != null) || (this.idUbicacion != null && !this.idUbicacion.equals(other.idUbicacion))) {
+        TipoUsuario other = (TipoUsuario) object;
+        if ((this.idTipoUsuario == null && other.idTipoUsuario != null) || (this.idTipoUsuario != null && !this.idTipoUsuario.equals(other.idTipoUsuario))) {
             return false;
         }
         return true;
@@ -107,7 +109,7 @@ public class Ubicacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Ubicacion[ idUbicacion=" + idUbicacion + " ]";
+        return "Connection.TipoUsuario[ idTipoUsuario=" + idTipoUsuario + " ]";
     }
     
 }

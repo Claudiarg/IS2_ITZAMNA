@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,51 +28,44 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "CentroDeCosto")
+@Table(name = "Proveedor")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "CentroDeCosto.findAll", query = "SELECT c FROM CentroDeCosto c")})
-public class CentroDeCosto implements Serializable {
+    @NamedQuery(name = "Proveedor.findAll", query = "SELECT p FROM Proveedor p")})
+public class Proveedor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idCentroDeCosto", nullable = false)
-    private Integer idCentroDeCosto;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "Descripcion", nullable = false, length = 45)
-    private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "centroDeCosto")
+    @Column(name = "idProveedor", nullable = false)
+    private Integer idProveedor;
+    @Size(max = 45)
+    @Column(name = "Proveedorcol", length = 45)
+    private String proveedorcol;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "proveedor")
     private Collection<Equipo> equipoCollection;
 
-    public CentroDeCosto() {
+    public Proveedor() {
     }
 
-    public CentroDeCosto(Integer idCentroDeCosto) {
-        this.idCentroDeCosto = idCentroDeCosto;
+    public Proveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
-    public CentroDeCosto(Integer idCentroDeCosto, String descripcion) {
-        this.idCentroDeCosto = idCentroDeCosto;
-        this.descripcion = descripcion;
+    public Integer getIdProveedor() {
+        return idProveedor;
     }
 
-    public Integer getIdCentroDeCosto() {
-        return idCentroDeCosto;
+    public void setIdProveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
-    public void setIdCentroDeCosto(Integer idCentroDeCosto) {
-        this.idCentroDeCosto = idCentroDeCosto;
+    public String getProveedorcol() {
+        return proveedorcol;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setProveedorcol(String proveedorcol) {
+        this.proveedorcol = proveedorcol;
     }
 
     @XmlTransient
@@ -88,18 +80,18 @@ public class CentroDeCosto implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCentroDeCosto != null ? idCentroDeCosto.hashCode() : 0);
+        hash += (idProveedor != null ? idProveedor.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CentroDeCosto)) {
+        if (!(object instanceof Proveedor)) {
             return false;
         }
-        CentroDeCosto other = (CentroDeCosto) object;
-        if ((this.idCentroDeCosto == null && other.idCentroDeCosto != null) || (this.idCentroDeCosto != null && !this.idCentroDeCosto.equals(other.idCentroDeCosto))) {
+        Proveedor other = (Proveedor) object;
+        if ((this.idProveedor == null && other.idProveedor != null) || (this.idProveedor != null && !this.idProveedor.equals(other.idProveedor))) {
             return false;
         }
         return true;
@@ -107,7 +99,7 @@ public class CentroDeCosto implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.CentroDeCosto[ idCentroDeCosto=" + idCentroDeCosto + " ]";
+        return "Auth.Proveedor[ idProveedor=" + idProveedor + " ]";
     }
     
 }

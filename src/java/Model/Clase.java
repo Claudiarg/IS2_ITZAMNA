@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,43 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "EstadoFisico")
+@Table(name = "Clase")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "EstadoFisico.findAll", query = "SELECT e FROM EstadoFisico e")})
-public class EstadoFisico implements Serializable {
+    @NamedQuery(name = "Clase.findAll", query = "SELECT c FROM Clase c")})
+public class Clase implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idEstadoFisico", nullable = false)
-    private Integer idEstadoFisico;
+    @Column(name = "idClase", nullable = false)
+    private Integer idClase;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estadoFisico")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clase")
     private Collection<Equipo> equipoCollection;
 
-    public EstadoFisico() {
+    public Clase() {
     }
 
-    public EstadoFisico(Integer idEstadoFisico) {
-        this.idEstadoFisico = idEstadoFisico;
+    public Clase(Integer idClase) {
+        this.idClase = idClase;
     }
 
-    public EstadoFisico(Integer idEstadoFisico, String descripcion) {
-        this.idEstadoFisico = idEstadoFisico;
+    public Clase(Integer idClase, String descripcion) {
+        this.idClase = idClase;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdEstadoFisico() {
-        return idEstadoFisico;
+    public Integer getIdClase() {
+        return idClase;
     }
 
-    public void setIdEstadoFisico(Integer idEstadoFisico) {
-        this.idEstadoFisico = idEstadoFisico;
+    public void setIdClase(Integer idClase) {
+        this.idClase = idClase;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class EstadoFisico implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idEstadoFisico != null ? idEstadoFisico.hashCode() : 0);
+        hash += (idClase != null ? idClase.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof EstadoFisico)) {
+        if (!(object instanceof Clase)) {
             return false;
         }
-        EstadoFisico other = (EstadoFisico) object;
-        if ((this.idEstadoFisico == null && other.idEstadoFisico != null) || (this.idEstadoFisico != null && !this.idEstadoFisico.equals(other.idEstadoFisico))) {
+        Clase other = (Clase) object;
+        if ((this.idClase == null && other.idClase != null) || (this.idClase != null && !this.idClase.equals(other.idClase))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class EstadoFisico implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.EstadoFisico[ idEstadoFisico=" + idEstadoFisico + " ]";
+        return "Auth.Clase[ idClase=" + idClase + " ]";
     }
     
 }

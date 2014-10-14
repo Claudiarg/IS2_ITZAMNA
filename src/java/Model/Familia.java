@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -19,7 +19,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -29,51 +28,44 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Responsable")
+@Table(name = "Familia")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Responsable.findAll", query = "SELECT r FROM Responsable r")})
-public class Responsable implements Serializable {
+    @NamedQuery(name = "Familia.findAll", query = "SELECT f FROM Familia f")})
+public class Familia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idResponsable", nullable = false)
-    private Integer idResponsable;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 50)
-    @Column(name = "NombreResponsable", nullable = false, length = 50)
-    private String nombreResponsable;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "responsable")
+    @Column(name = "idFamilia", nullable = false)
+    private Integer idFamilia;
+    @Size(max = 45)
+    @Column(name = "Descripcion", length = 45)
+    private String descripcion;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "familia")
     private Collection<Equipo> equipoCollection;
 
-    public Responsable() {
+    public Familia() {
     }
 
-    public Responsable(Integer idResponsable) {
-        this.idResponsable = idResponsable;
+    public Familia(Integer idFamilia) {
+        this.idFamilia = idFamilia;
     }
 
-    public Responsable(Integer idResponsable, String nombreResponsable) {
-        this.idResponsable = idResponsable;
-        this.nombreResponsable = nombreResponsable;
+    public Integer getIdFamilia() {
+        return idFamilia;
     }
 
-    public Integer getIdResponsable() {
-        return idResponsable;
+    public void setIdFamilia(Integer idFamilia) {
+        this.idFamilia = idFamilia;
     }
 
-    public void setIdResponsable(Integer idResponsable) {
-        this.idResponsable = idResponsable;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public String getNombreResponsable() {
-        return nombreResponsable;
-    }
-
-    public void setNombreResponsable(String nombreResponsable) {
-        this.nombreResponsable = nombreResponsable;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @XmlTransient
@@ -88,18 +80,18 @@ public class Responsable implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idResponsable != null ? idResponsable.hashCode() : 0);
+        hash += (idFamilia != null ? idFamilia.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Responsable)) {
+        if (!(object instanceof Familia)) {
             return false;
         }
-        Responsable other = (Responsable) object;
-        if ((this.idResponsable == null && other.idResponsable != null) || (this.idResponsable != null && !this.idResponsable.equals(other.idResponsable))) {
+        Familia other = (Familia) object;
+        if ((this.idFamilia == null && other.idFamilia != null) || (this.idFamilia != null && !this.idFamilia.equals(other.idFamilia))) {
             return false;
         }
         return true;
@@ -107,7 +99,7 @@ public class Responsable implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Responsable[ idResponsable=" + idResponsable + " ]";
+        return "Auth.Familia[ idFamilia=" + idFamilia + " ]";
     }
     
 }

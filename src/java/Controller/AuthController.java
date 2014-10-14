@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Connection.Usuario;
-import Connection.TipoUsuario;
+import Model.Usuario;
+import Model.TipoUsuario;
 
 
 /**
  *
  * @author mangekyou
  */
-public class validation extends HttpServlet {
+public class AuthController extends HttpServlet {
   
    //metodo encargado de la gestión del método POST
     protected void processRequestPOST(HttpServletRequest request, HttpServletResponse response)

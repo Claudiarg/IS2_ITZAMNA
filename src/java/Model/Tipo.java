@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -27,36 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Marca")
+@Table(name = "Tipo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Marca.findAll", query = "SELECT m FROM Marca m")})
-public class Marca implements Serializable {
+    @NamedQuery(name = "Tipo.findAll", query = "SELECT t FROM Tipo t")})
+public class Tipo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idTipo", nullable = false)
+    private Integer idTipo;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idMarca", nullable = false)
-    private Integer idMarca;
-    @Size(max = 45)
-    @Column(name = "Descripcion", length = 45)
+    @Size(min = 1, max = 45)
+    @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "marca")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo")
     private Collection<Equipo> equipoCollection;
 
-    public Marca() {
+    public Tipo() {
     }
 
-    public Marca(Integer idMarca) {
-        this.idMarca = idMarca;
+    public Tipo(Integer idTipo) {
+        this.idTipo = idTipo;
     }
 
-    public Integer getIdMarca() {
-        return idMarca;
+    public Tipo(Integer idTipo, String descripcion) {
+        this.idTipo = idTipo;
+        this.descripcion = descripcion;
     }
 
-    public void setIdMarca(Integer idMarca) {
-        this.idMarca = idMarca;
+    public Integer getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(Integer idTipo) {
+        this.idTipo = idTipo;
     }
 
     public String getDescripcion() {
@@ -79,18 +88,18 @@ public class Marca implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idMarca != null ? idMarca.hashCode() : 0);
+        hash += (idTipo != null ? idTipo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Marca)) {
+        if (!(object instanceof Tipo)) {
             return false;
         }
-        Marca other = (Marca) object;
-        if ((this.idMarca == null && other.idMarca != null) || (this.idMarca != null && !this.idMarca.equals(other.idMarca))) {
+        Tipo other = (Tipo) object;
+        if ((this.idTipo == null && other.idTipo != null) || (this.idTipo != null && !this.idTipo.equals(other.idTipo))) {
             return false;
         }
         return true;
@@ -98,7 +107,7 @@ public class Marca implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Marca[ idMarca=" + idMarca + " ]";
+        return "Auth.Tipo[ idTipo=" + idTipo + " ]";
     }
     
 }

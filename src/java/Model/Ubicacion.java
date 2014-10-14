@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Auth;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -29,43 +29,43 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author mangekyou
  */
 @Entity
-@Table(name = "Tipo")
+@Table(name = "Ubicacion")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tipo.findAll", query = "SELECT t FROM Tipo t")})
-public class Tipo implements Serializable {
+    @NamedQuery(name = "Ubicacion.findAll", query = "SELECT u FROM Ubicacion u")})
+public class Ubicacion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idTipo", nullable = false)
-    private Integer idTipo;
+    @Column(name = "idUbicacion", nullable = false)
+    private Integer idUbicacion;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "Descripcion", nullable = false, length = 45)
     private String descripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ubicacion")
     private Collection<Equipo> equipoCollection;
 
-    public Tipo() {
+    public Ubicacion() {
     }
 
-    public Tipo(Integer idTipo) {
-        this.idTipo = idTipo;
+    public Ubicacion(Integer idUbicacion) {
+        this.idUbicacion = idUbicacion;
     }
 
-    public Tipo(Integer idTipo, String descripcion) {
-        this.idTipo = idTipo;
+    public Ubicacion(Integer idUbicacion, String descripcion) {
+        this.idUbicacion = idUbicacion;
         this.descripcion = descripcion;
     }
 
-    public Integer getIdTipo() {
-        return idTipo;
+    public Integer getIdUbicacion() {
+        return idUbicacion;
     }
 
-    public void setIdTipo(Integer idTipo) {
-        this.idTipo = idTipo;
+    public void setIdUbicacion(Integer idUbicacion) {
+        this.idUbicacion = idUbicacion;
     }
 
     public String getDescripcion() {
@@ -88,18 +88,18 @@ public class Tipo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTipo != null ? idTipo.hashCode() : 0);
+        hash += (idUbicacion != null ? idUbicacion.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tipo)) {
+        if (!(object instanceof Ubicacion)) {
             return false;
         }
-        Tipo other = (Tipo) object;
-        if ((this.idTipo == null && other.idTipo != null) || (this.idTipo != null && !this.idTipo.equals(other.idTipo))) {
+        Ubicacion other = (Ubicacion) object;
+        if ((this.idUbicacion == null && other.idUbicacion != null) || (this.idUbicacion != null && !this.idUbicacion.equals(other.idUbicacion))) {
             return false;
         }
         return true;
@@ -107,7 +107,7 @@ public class Tipo implements Serializable {
 
     @Override
     public String toString() {
-        return "Auth.Tipo[ idTipo=" + idTipo + " ]";
+        return "Auth.Ubicacion[ idUbicacion=" + idUbicacion + " ]";
     }
     
 }
