@@ -39,6 +39,7 @@ public class AuthController extends HttpServlet {
             response.sendRedirect("loginExito.jsp");
         }else{
             //lógica para login inválido
+            response.sendRedirect("login.jsp");
         }
     }
  
@@ -51,7 +52,7 @@ public class AuthController extends HttpServlet {
         HttpSession sesion = request.getSession();
         if(action.equals("/out")){
             sesion.invalidate();
-            response.sendRedirect("/home.jsp");
+            response.sendRedirect("login.jsp");
         }else{
  
         }

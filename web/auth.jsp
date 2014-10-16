@@ -3,7 +3,7 @@
     Created on : 14/10/2014, 02:09:39 AM
     Author     : mangekyou
 --%>
-
+<%@ page import="Controller.AuthController" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
