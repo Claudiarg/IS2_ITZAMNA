@@ -14,7 +14,7 @@
     <body>
         <h1>Hello World!</h1>
 
-        <form action="<%=request.getContextPath()%>/Controller/AuthController"  method="POST">
+        <form action="<%=request.getContextPath()%>/auth.jsp"  method="POST">
             <input type="text" name="user" value="usuario"/>
             <input type="password" name="password" value="contraseña"/>
             <input type="submit" value="Enviar"/>
