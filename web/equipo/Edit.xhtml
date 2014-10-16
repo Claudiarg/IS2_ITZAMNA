@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquipoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_idEquipo}" for="idEquipo" />
+                    <h:inputText id="idEquipo" value="#{equipoController.selected.idEquipo}" title="#{bundle.EditEquipoTitle_idEquipo}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_idEquipo}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_informatica}" for="informatica" />
+                    <h:inputText id="informatica" value="#{equipoController.selected.informatica}" title="#{bundle.EditEquipoTitle_informatica}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_informatica}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_unam}" for="unam" />
+                    <h:inputText id="unam" value="#{equipoController.selected.unam}" title="#{bundle.EditEquipoTitle_unam}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_unam}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_inv}" for="inv" />
+                    <h:inputText id="inv" value="#{equipoController.selected.inv}" title="#{bundle.EditEquipoTitle_inv}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_inv}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{equipoController.selected.descripcion}" title="#{bundle.EditEquipoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_serie}" for="serie" />
+                    <h:inputText id="serie" value="#{equipoController.selected.serie}" title="#{bundle.EditEquipoTitle_serie}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_serie}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_fechaRegistro}" for="fechaRegistro" />
+                    <h:inputText id="fechaRegistro" value="#{equipoController.selected.fechaRegistro}" title="#{bundle.EditEquipoTitle_fechaRegistro}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_fechaRegistro}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_fechaResguardo}" for="fechaResguardo" />
+                    <h:inputText id="fechaResguardo" value="#{equipoController.selected.fechaResguardo}" title="#{bundle.EditEquipoTitle_fechaResguardo}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_fechaResguardo}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{equipoController.selected.estado}" title="#{bundle.EditEquipoTitle_estado}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_estadoFisico}" for="estadoFisico" />
+                    <h:selectOneMenu id="estadoFisico" value="#{equipoController.selected.estadoFisico}" title="#{bundle.EditEquipoTitle_estadoFisico}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_estadoFisico}">
+                        <f:selectItems value="#{estadoFisicoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_centroDeCosto}" for="centroDeCosto" />
+                    <h:selectOneMenu id="centroDeCosto" value="#{equipoController.selected.centroDeCosto}" title="#{bundle.EditEquipoTitle_centroDeCosto}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_centroDeCosto}">
+                        <f:selectItems value="#{centroDeCostoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_clase}" for="clase" />
+                    <h:selectOneMenu id="clase" value="#{equipoController.selected.clase}" title="#{bundle.EditEquipoTitle_clase}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_clase}">
+                        <f:selectItems value="#{claseController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_familia}" for="familia" />
+                    <h:selectOneMenu id="familia" value="#{equipoController.selected.familia}" title="#{bundle.EditEquipoTitle_familia}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_familia}">
+                        <f:selectItems value="#{familiaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_marca}" for="marca" />
+                    <h:selectOneMenu id="marca" value="#{equipoController.selected.marca}" title="#{bundle.EditEquipoTitle_marca}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_marca}">
+                        <f:selectItems value="#{marcaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_uso}" for="uso" />
+                    <h:selectOneMenu id="uso" value="#{equipoController.selected.uso}" title="#{bundle.EditEquipoTitle_uso}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_uso}">
+                        <f:selectItems value="#{usoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_modelo}" for="modelo" />
+                    <h:selectOneMenu id="modelo" value="#{equipoController.selected.modelo}" title="#{bundle.EditEquipoTitle_modelo}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_modelo}">
+                        <f:selectItems value="#{modeloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_nivelObsolescencia}" for="nivelObsolescencia" />
+                    <h:selectOneMenu id="nivelObsolescencia" value="#{equipoController.selected.nivelObsolescencia}" title="#{bundle.EditEquipoTitle_nivelObsolescencia}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_nivelObsolescencia}">
+                        <f:selectItems value="#{nivelObsolescenciaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_proveedor}" for="proveedor" />
+                    <h:selectOneMenu id="proveedor" value="#{equipoController.selected.proveedor}" title="#{bundle.EditEquipoTitle_proveedor}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_proveedor}">
+                        <f:selectItems value="#{proveedorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_responsable}" for="responsable" />
+                    <h:selectOneMenu id="responsable" value="#{equipoController.selected.responsable}" title="#{bundle.EditEquipoTitle_responsable}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_responsable}">
+                        <f:selectItems value="#{responsableController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_tipo}" for="tipo" />
+                    <h:selectOneMenu id="tipo" value="#{equipoController.selected.tipo}" title="#{bundle.EditEquipoTitle_tipo}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_tipo}">
+                        <f:selectItems value="#{tipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEquipoLabel_ubicacion}" for="ubicacion" />
+                    <h:selectOneMenu id="ubicacion" value="#{equipoController.selected.ubicacion}" title="#{bundle.EditEquipoTitle_ubicacion}" required="true" requiredMessage="#{bundle.EditEquipoRequiredMessage_ubicacion}">
+                        <f:selectItems value="#{ubicacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equipoController.update}" value="#{bundle.EditEquipoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquipoViewLink}"/>
+                <br />
+                <h:commandLink action="#{equipoController.prepareList}" value="#{bundle.EditEquipoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquipoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
