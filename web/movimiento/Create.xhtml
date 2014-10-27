@@ -37,6 +37,10 @@
                     <h:selectOneMenu id="equipo" value="#{movimientoController.selected.equipo}" title="#{bundle.CreateMovimientoTitle_equipo}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_equipo}">
                         <f:selectItems value="#{equipoController.itemsAvailableSelectOne}"/>
                     </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMovimientoLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{movimientoController.selected.usuario}" title="#{bundle.CreateMovimientoTitle_usuario}" required="true" requiredMessage="#{bundle.CreateMovimientoRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{movimientoController.create}" value="#{bundle.CreateMovimientoSaveLink}" />

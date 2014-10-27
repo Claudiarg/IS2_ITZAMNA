@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Movimiento.findAll", query = "SELECT m FROM Movimiento m")})
 public class Movimiento implements Serializable {
+    @JoinColumn(name = "usuario", referencedColumnName = "idUsuario", nullable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -208,6 +211,14 @@ public class Movimiento implements Serializable {
     @Override
     public String toString() {
         return "Auth.Movimiento[ idMovimiento=" + idMovimiento + " ]";
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
 }

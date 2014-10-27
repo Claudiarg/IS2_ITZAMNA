@@ -35,6 +35,8 @@
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewMovimientoLabel_equipo}"/>
                     <h:outputText value="#{movimientoController.selected.equipo}" title="#{bundle.ViewMovimientoTitle_equipo}"/>
+                    <h:outputText value="#{bundle.ViewMovimientoLabel_usuario}"/>
+                    <h:outputText value="#{movimientoController.selected.usuario}" title="#{bundle.ViewMovimientoTitle_usuario}"/>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{movimientoController.destroyAndView}" value="#{bundle.ViewMovimientoDestroyLink}"/>

@@ -9,7 +9,18 @@
 	String usuario = request.getParameter("user").trim();
 	String password = request.getParameter("password").trim();
 	
-        //Usuario temp = Usuario.findByCorreo(usuario);
+       // Usuario temp = new Usuario().findByCorreo(usuario);
+        
+        /*
+Yuri Ramírez  yuri@biblional.bibliog.unam.mx admin
+
+Claudia Ramírez clau@biblioteca.unam.mx secretaria
+
+Elizabeth Hermosillo  elizabeth@biblioteca.unam.mx tecnico
+
+Juan Ramírez  juan@biblioteca.unam.mx  personal
+1
+       */
 	/*verificamos que usuario y contraseña en los parametros sean válidos*/
 	if (usuario.equals(userName) && password.equals(userPass)) {
 		
@@ -17,6 +28,7 @@
 		HttpSession sesion = request.getSession();
 		sesion.setAttribute("usuario", usuario);
 		sesion.setAttribute("isLogin","true"); 
+                //sesion.setAttribute("tipo" ,"");
 		
 		/*redireccionamos a la página inicial de la sesión*/
 		response.sendRedirect("index.jsp");
