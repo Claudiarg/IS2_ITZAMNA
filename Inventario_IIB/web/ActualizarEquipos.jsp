@@ -3,6 +3,8 @@
     Created on : 29/10/2014, 11:49:20 PM
     Author     : clau
 --%>
+
+<%@page import="java.sql.ResultSet"%>
 <%@page import="Conexion.ConexionBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -132,60 +134,45 @@
                         <h2>Actualizar equipo.</h2>                        
                         <p>Ingresa el número de inventario del departamento de 
                             informática.</p>       
-                        <form action="ActualizarEquipos.jsp" method="post"> 
-                            <div style = "display: " class="input-group input-group-sm">
-                                <input type="text" class="input-group input-group-sm" name="InvInf" style="width : 100px">
-                                <button class="btn btn-default" type="button">Buscar</button>
-                            </div>                            
+                        <form action="ActualizarEquiposC.jsp" method="post">                           
+                                <input type="text" class="input-group input-group-sm" name="numI" style="width : 100px">
+                                <button class="btn btn-default" type="submit">Buscar</button>                            
                         </form>                                                                       
                     </div>
-                   
+
                     <div id="formularioEdit">
-                        <%
-                            String mensaje;
-                            ConexionBD conexion = new ConexionBD();
-                            String InvInf = request.getParameter("InvInf");
-                            if(InvInf != ""){
-                                conexion.conectarBD();
-                                String query = "Select * from Equipo where ";
-                                conexion.consultarBD(query);
-                                
-                            }else{
-                               mensaje = "Ingresa un número de equipo.";
-                            }
-                            
-                        %>
-                          
-                    </div>
+
 
                     </div>
+
                 </div>
-
-
-
-
             </div>
+
+
+
+
         </div>
+    </div>
 
-        <div id="footer" >
-            <div class="container-fluid" role="footer">
-                <p>2014 &copy; Biblioteca Nacional.<br>
-                    Hemeroteca Nacional, Ciudad Universitaria. Universidad Nacional Autónoma de México.<br>
-                    <a href="http://www.iib.unam.mx/">IIB</a>
-                </p>
-            </div>
+    <div id="footer" >
+        <div class="container-fluid" role="footer">
+            <p>2014 &copy; Biblioteca Nacional.<br>
+                Hemeroteca Nacional, Ciudad Universitaria. Universidad Nacional Autónoma de México.<br>
+                <a href="http://www.iib.unam.mx/">IIB</a>
+            </p>
         </div>
+    </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=" js/jquery.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src=" js/bootstrap.min.js"></script>
-        <script src=" js/lightbox.js"></script>
-        <script src=" js/async_content.js"></script>
-        <script src=" js/async-consulta.js"></script>
-        <script src=" js/async_contact.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src=" js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src=" js/bootstrap.min.js"></script>
+    <script src=" js/lightbox.js"></script>
+    <script src=" js/async_content.js"></script>
+    <script src=" js/async-consulta.js"></script>
+    <script src=" js/async_contact.js"></script>
 
 
 
-    </body>
+</body>
 </html>
