@@ -1,9 +1,9 @@
 <%-- 
-    Document   : Vista
-    Created on : 12/10/2014, 10:54:09 PM
-    Author     : beth
+    Document   : ActualizarEquipos.jsp
+    Created on : 29/10/2014, 11:49:20 PM
+    Author     : clau
 --%>
-
+<%@page import="Conexion.ConexionBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -67,7 +67,7 @@
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="RegistrarEquipo.jsp"> 
+                                    <h4 class="panel-title"><a href="ActualizarEquipos.jsp"> 
                                             Actualizar Equipos </a></h4>
                                 </div>
                                 <div id="genusPanel" class="panel-collapse collapse">
@@ -129,8 +129,35 @@
 
                     <div id="main-content">	
 
-                        <h2>Bienvenido</h2>
-                        <p></p>
+                        <h2>Actualizar equipo.</h2>                        
+                        <p>Ingresa el número de inventario del departamento de 
+                            informática.</p>       
+                        <form action="ActualizarEquipos.jsp" method="post"> 
+                            <div style = "display: " class="input-group input-group-sm">
+                                <input type="text" class="input-group input-group-sm" name="InvInf" style="width : 100px">
+                                <button class="btn btn-default" type="button">Buscar</button>
+                            </div>                            
+                        </form>                                                                       
+                    </div>
+                   
+                    <div id="formularioEdit">
+                        <%
+                            String mensaje;
+                            ConexionBD conexion = new ConexionBD();
+                            String InvInf = request.getParameter("InvInf");
+                            if(InvInf != ""){
+                                conexion.conectarBD();
+                                String query = "Select * from Equipo where ";
+                                conexion.consultarBD(query);
+                                
+                            }else{
+                               mensaje = "Ingresa un número de equipo.";
+                            }
+                            
+                        %>
+                          
+                    </div>
+
                     </div>
                 </div>
 
