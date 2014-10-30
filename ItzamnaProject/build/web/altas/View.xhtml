@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAltasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAltasLabel_idAltas}"/>
+                    <h:outputText value="#{altasController.selected.idAltas}" title="#{bundle.ViewAltasTitle_idAltas}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_claveActivoFijo}"/>
+                    <h:outputText value="#{altasController.selected.claveActivoFijo}" title="#{bundle.ViewAltasTitle_claveActivoFijo}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_placa}"/>
+                    <h:outputText value="#{altasController.selected.placa}" title="#{bundle.ViewAltasTitle_placa}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_ip}"/>
+                    <h:outputText value="#{altasController.selected.ip}" title="#{bundle.ViewAltasTitle_ip}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_puerto}"/>
+                    <h:outputText value="#{altasController.selected.puerto}" title="#{bundle.ViewAltasTitle_puerto}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_nombrePC}"/>
+                    <h:outputText value="#{altasController.selected.nombrePC}" title="#{bundle.ViewAltasTitle_nombrePC}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_grupoTrabajo}"/>
+                    <h:outputText value="#{altasController.selected.grupoTrabajo}" title="#{bundle.ViewAltasTitle_grupoTrabajo}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_sistemaOperativo}"/>
+                    <h:outputText value="#{altasController.selected.sistemaOperativo}" title="#{bundle.ViewAltasTitle_sistemaOperativo}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_servicePack}"/>
+                    <h:outputText value="#{altasController.selected.servicePack}" title="#{bundle.ViewAltasTitle_servicePack}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_servidorAntivirus}"/>
+                    <h:outputText value="#{altasController.selected.servidorAntivirus}" title="#{bundle.ViewAltasTitle_servidorAntivirus}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_versionAntivirus}"/>
+                    <h:outputText value="#{altasController.selected.versionAntivirus}" title="#{bundle.ViewAltasTitle_versionAntivirus}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_problemas}"/>
+                    <h:outputText value="#{altasController.selected.problemas}" title="#{bundle.ViewAltasTitle_problemas}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_segmentos}"/>
+                    <h:outputText value="#{altasController.selected.segmentos}" title="#{bundle.ViewAltasTitle_segmentos}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_nombreUsuario}"/>
+                    <h:outputText value="#{altasController.selected.nombreUsuario}" title="#{bundle.ViewAltasTitle_nombreUsuario}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_responsableLevantamiento}"/>
+                    <h:outputText value="#{altasController.selected.responsableLevantamiento}" title="#{bundle.ViewAltasTitle_responsableLevantamiento}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_equipoaltas}"/>
+                    <h:outputText value="#{altasController.selected.equipoaltas}" title="#{bundle.ViewAltasTitle_equipoaltas}"/>
+                    <h:outputText value="#{bundle.ViewAltasLabel_movimiento}"/>
+                    <h:outputText value="#{altasController.selected.movimiento}" title="#{bundle.ViewAltasTitle_movimiento}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{altasController.destroyAndView}" value="#{bundle.ViewAltasDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAltasEditLink}"/>
+                <br />
+                <h:commandLink action="#{altasController.prepareCreate}" value="#{bundle.ViewAltasCreateLink}" />
+                <br />
+                <h:commandLink action="#{altasController.prepareList}" value="#{bundle.ViewAltasShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAltasIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

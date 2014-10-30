@@ -1,0 +1,197 @@
+html, body {
+    margin: 0;
+    background-image: url('fondo.jpg');
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+h1,h2{
+    text-transform: uppercase;
+    text-align: left;
+    text-shadow: 0 0 10px #808FA1;
+}
+
+.container-fluid {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+#banner_iib{
+    margin-right: -440px;
+    float: right;
+}
+
+#header, #menu, #main, #footer {
+    width: 80%;
+    margin: 0 auto;
+    /*width: 100%;*/
+}
+#header {
+   /* background: #044e8a url(../images/header-background.png) repeat-x 0px 50%;*/
+    /*height: 15%;*/
+ background: #044e8a;
+    padding: 0;
+}
+#escudoUNAM img {
+    width: 20%;
+}
+#header-title {
+    float: right;
+    font-size: 1.2em;
+    color: #fff;
+    padding: .5em 1.5em;
+    z-index: 10;
+    text-align: right;
+    margin-right: 170px;
+    text-shadow: 0 0 10px #808FA1;
+    text-decoration: none;
+    font-weight: bolder;
+    position: relative;
+    width: 25%;
+line-height: 1em;
+}
+.nav > li, #content, #main-content, .main-content, .tab-content, #footer {
+    word-wrap: break-word;
+}
+#menu {
+    background: #706e43 repeat-x 0px 50%;
+}
+#menu .nav {
+    margin: 1em auto;
+}
+#menu .nav > li {
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+#menu .nav > li > a, #menu .nav > li > a:link {
+    color: #000;
+    text-decoration: none;
+    text-shadow: #706f3f 1px 1px 1px;
+    border: 1px solid transparent;
+    padding: .5em 1em;
+}
+
+#menu .nav > li > a:hover, #menu .nav > li > a:focus, #menu .nav > li.active > a {
+
+    background: #959973 repeat-x 0px 50%;
+    text-shadow: #77620F 1px 1px 1px;
+    border: 1px solid #7e804f;
+}
+#menu .nav > li.active > a {
+    pointer-events: none;
+    cursor: default;
+    font-weight: bold;
+}
+
+#vertical-menu, .vertical-menu {
+    display: inline-block;
+    width: 20%;
+}
+.vertical-menu {
+    border-left: 1px solid #ccc;
+}
+.vertical-menu > .nav-tabs > li > a {
+    border: 1px solid #ccc;
+    border-left: transparent;
+    border-top: transparent;
+    border-radius: 0;
+    color: #6d6d6d;
+    font-weight: bolder;
+}
+.vertical-menu > .nav-tabs > li:first-child > a, .vertical-menu > .nav-tabs > li:first-child.active > a {
+    border-top: 1px solid #ccc !important;
+}
+.vertical-menu > .nav-tabs > li.active > a, .vertical-menu > .nav-tabs > li.active > a:hover, .vertical-menu > .nav-tabs > li.active > a:focus {
+    border: transparent;
+    border-bottom: 1px solid #CCC; 
+}
+.vertical-menu > .nav-tabs > li.active > a, .vertical-menu > .nav-tabs > li.active > a:hover, .vertical-menu > .nav-tabs > li.active > a:focus, .panel-title a, panel-title a:hover, .panel-title a:focus{
+    color: #243C5F; 
+}
+
+#content {
+    width: 100%;
+    border: 1px solid #CCC;
+}
+
+/*
+#main-content, .main-content {
+display: inline-block;
+width: 79%;
+padding: 1.5em;
+}
+*/
+#main-content, .main-content, .tab-content {
+    display: inline-block;
+    vertical-align: top;
+    width: 79%;
+    padding: 1em 1.7em;
+    text-align: justify;
+}
+
+#main-content {
+    /* border-left: 1px solid #CCC;*/
+    border-top: 0;
+}
+#main-content2 {
+    display: inline-block;
+    width: 100%;
+    padding: 1.5em 4em;
+}
+
+#main .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+#main-title {
+    font-size: 2.15em;
+}
+#main-title h1 {
+    margin: 0;
+}
+.page-header {
+    color: #fff;
+    background: #333C4D repeat-x;
+    border-bottom: 2px solid #cfcfcf;
+    margin: 0;
+    padding: .4em .8em;
+    text-shadow: 0 0 10px #808FA1;
+    text-transform: uppercase;
+    position: relative;
+}
+.page-header2{
+    padding-bottom: .5em;
+    border-bottom: 1px solid #eee;
+}
+#footer {
+    font-size: .7em;
+    padding: .5em;
+
+    /*color:#fff;*/
+    color: #333;
+    text-align: center;
+}
+
+.tab-pane {
+    display: none;
+    visibility: hidden;
+}
+
+.tab-pane.active, .tab-pane.in {
+    visibility: visible;
+    display: inline-block;
+}
+.panel-title a, .panel-title a:hover, .panel-title a:focus{
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+}
+
+.panel-title a.collapsed{
+    font-weight: normal;
+    color: inherit;
+}
+
