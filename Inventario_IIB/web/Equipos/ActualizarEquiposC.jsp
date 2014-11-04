@@ -11,26 +11,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema de Inventario</title>
-        <link rel="stylesheet" media="screen" href=" css/bootstrap.min.css" >
-        <link rel="stylesheet" media="screen" href=" css/bootstrap-theme.min.css" >
-        <link rel="stylesheet" media="screen" href=" css/lightbox.css" >
-        <link rel="stylesheet" media="screen" href=" css/main.css" >
-        <link rel="stylesheet" media="screen" href=" css/media.css" >
-        <link rel="stylesheet" media="screen" href=" css/result-consulta.css" >
-        <link rel="shortcut icon" href=" images/favicon_64.gif">
-        <link rel="apple-touch-icon" href=" images/favicon_64.gif">
+        <link rel="stylesheet" media="screen" href=" ../css/bootstrap.min.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/bootstrap-theme.min.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/lightbox.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/main.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/media.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/result-consulta.css" >
+        <link rel="shortcut icon" href=" ../images/favicon_64.gif">
+        <link rel="apple-touch-icon" href=" ../images/favicon_64.gif">
     </head>
     <body>
         <div id="header" class="jumbotron">
             <div class="container-fluid">
                 <a href="http://www.unam.mx/" id="escudoUNAM">
-                    <img alt="Universidad Nacional Autónoma de México, UNAM" src="images/unam-logo.png"/>
+                    <img alt="Universidad Nacional Autónoma de México, UNAM" src="../images/unam-logo.png"/>
                 </a>
 
                 <a href="#" id="header-title">
                     Sistema de Inventario <br>Bibliotecario
                 </a>
-                <img id="banner_iib" src="images/banner_iib.jpg">
+                <img id="banner_iib" src="../images/banner_iib.jpg">
             </div>
         </div>
 
@@ -88,6 +88,7 @@
                         %>                    
                         <form action="ActualizarEquipos.jsp" method="post">
                             <div>
+                                <section>
                                 <p>Número de inventario informática <span><input type="text" class="input-group input-group-sm" name="invInf" style="width : 200px" value="<%=invInfBD%>"></span></p>
                                 <p>Número de inventario UNAM <span><input type="text" class="input-group input-group-sm" name="invUNAM" style="width : 200px" value="<%=invUNAM%>"></span></p>
                                 <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInv" style="width : 200px"value="<%=numInv%>"></span></p>   
@@ -96,6 +97,7 @@
                                 <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px"value="<%=serie%>"></span></p>
                                 <p>Fecha de registro<span><input type="text" class="input-group input-group-sm" name="fechaReg" style="width : 200px"value="<%=fechaReg%>"></span></p>
                                 <p>Fecha de resguardo <span><input type="text" class="input-group input-group-sm" name="" style="width : 200px"value="<%=fechaRes%>"></span></p>
+                                </section>
                                         <%
                                             ConexionBD con = new ConexionBD();
                                             con.conectarBD();
@@ -111,7 +113,7 @@
                                          while (r.next()) {
                                              idclase = r.getInt(1);
                                              clase1 = r.getString(2);%>
-                                    <option value="<%=idclase%>"><%=clase%></option>
+                                    <option value="<%=idclase%>"><%=clase1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -126,7 +128,7 @@
                                          while (r.next()) {
                                              idestado = r.getInt(1);
                                              estado1 = r.getString(2);%>
-                                    <option value="<%=idestado%>"><%=estado%></option>
+                                    <option value="<%=idestado%>"><%=estado1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -156,7 +158,7 @@
                                          while (r.next()) {
                                              idfamilia = r.getInt(1);
                                              familia1 = r.getString(2);%>
-                                    <option value="<%=idfamilia%>"><%=familia%></option>
+                                    <option value="<%=idfamilia%>"><%=familia1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -171,7 +173,7 @@
                                          while (r.next()) {
                                              idmarca = r.getInt(1);
                                              marca1 = r.getString(2);%>
-                                    <option value="<%=idmarca%>"><%=marca%></option>
+                                    <option value="<%=idmarca%>"><%=marca1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -186,7 +188,7 @@
                                          while (r.next()) {
                                              idmodelo = r.getInt(1);
                                              modelo1 = r.getString(2);%>
-                                    <option value="<%=idmodelo%>"><%=modelo%></option>
+                                    <option value="<%=idmodelo%>"><%=modelo1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -231,7 +233,7 @@
                                          while (r.next()) {
                                              idtipo = r.getInt(1);
                                              tipo1 = r.getString(2);%>
-                                    <option value="<%=idtipo%>"><%=tipo%></option>
+                                    <option value="<%=idtipo%>"><%=tipo1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -261,7 +263,7 @@
                                          while (r.next()) {
                                              iduso = r.getInt(1);
                                              uso1 = r.getString(2);%>
-                                    <option value="<%=iduso%>"><%=uso%></option>
+                                    <option value="<%=iduso%>"><%=uso1%></option>
                                     <%
                                         }
                                     %></select><br><%
@@ -288,13 +290,13 @@
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=" js/jquery.js"></script>
+        <script src=" ../js/jquery.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src=" js/bootstrap.min.js"></script>
-        <script src=" js/lightbox.js"></script>
-        <script src=" js/async_content.js"></script>
-        <script src=" js/async-consulta.js"></script>
-        <script src=" js/async_contact.js"></script>
+        <script src=" ../js/bootstrap.min.js"></script>
+        <script src=" ../js/lightbox.js"></script>
+        <script src=" ../js/async_content.js"></script>
+        <script src=" ../js/async-consulta.js"></script>
+        <script src=" ../js/async_contact.js"></script>
 
 
 

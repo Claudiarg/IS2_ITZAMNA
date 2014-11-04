@@ -10,26 +10,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema de Inventario</title>
-        <link rel="stylesheet" media="screen" href=" css/bootstrap.min.css" >
-        <link rel="stylesheet" media="screen" href=" css/bootstrap-theme.min.css" >
-        <link rel="stylesheet" media="screen" href=" css/lightbox.css" >
-        <link rel="stylesheet" media="screen" href=" css/main.css" >
-        <link rel="stylesheet" media="screen" href=" css/media.css" >
-        <link rel="stylesheet" media="screen" href=" css/result-consulta.css" >
-        <link rel="shortcut icon" href=" images/favicon_64.gif">
-        <link rel="apple-touch-icon" href=" images/favicon_64.gif">
+        <link rel="stylesheet" media="screen" href=" ../css/bootstrap.min.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/bootstrap-theme.min.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/lightbox.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/main.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/media.css" >
+        <link rel="stylesheet" media="screen" href=" ../css/result-consulta.css" >
+        <link rel="shortcut icon" href=" ../images/favicon_64.gif">
+        <link rel="apple-touch-icon" href=" ../images/favicon_64.gif">
     </head>
     <body>
         <div id="header" class="jumbotron">
             <div class="container-fluid">
                 <a href="http://www.unam.mx/" id="escudoUNAM">
-                    <img alt="Universidad Nacional Autónoma de México, UNAM" src="images/unam-logo.png"/>
+                    <img alt="Universidad Nacional Autónoma de México, UNAM" src="../images/unam-logo.png"/>
                 </a>
 
                 <a href="#" id="header-title">
                     Sistema de Inventario <br>Bibliotecario
                 </a>
-                <img id="banner_iib" src="images/banner_iib.jpg">
+                <img id="banner_iib" src="../images/banner_iib.jpg">
             </div>
         </div>
 
