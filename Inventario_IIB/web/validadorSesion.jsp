@@ -20,12 +20,15 @@
         Usuario usuario = new Usuario(email, contrasenia);        
 
         if(usuario.getCount()== 1){//existe el usuario.
+            //System.out.println("Si existe el usuario");
             if(usuario.getActivo() == 1){// si esta el usuario activo en el sistema                 
+                //System.out.println("Usuario activo");
                  HttpSession sesion = request.getSession();
     		 sesion.setAttribute("idUs", usuario.getIdUsuario());
                  sesion.setAttribute("Nombre", usuario.getNombre());
                  sesion.setAttribute("Apellido", usuario.getApellido());
 		 sesion.setAttribute("tipoU",usuario.getTipoUsuario());
+                 sesion.setAttribute("contrasenia", usuario.getContrasenia());
                  sesion.setAttribute("isLogin","true");
                     /*1 | Jefatura de departamento    |
                       2 | Secretaria                  |
@@ -48,15 +51,14 @@
                      default:
                          response.sendRedirect("InicioSesion.jsp");
                          break;
-                 }                                      
+                 }                                     
             }else{              
               response.sendRedirect("InicioSesion.jsp?error=NA");
             }                                                   
         }else{            
             response.sendRedirect("InicioSesion.jsp?error=NE");            
         }
-        %>
-        
+        %>      
                 
      </body>
     </html>

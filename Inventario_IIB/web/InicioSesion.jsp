@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,48 +54,31 @@
 
                     <div id="main-content">	
                         <%
-                            if (request.getParameter("error") != null) {
-                                if (request.getParameter("login") != null) {
-                        %>
-                        <div class="alert alert-error">
-                            <strong>Error</strong> No has iniciado sesión<br> Por favor,
-                            ingresa correctamente.
-                        </div>
+                            if (request.getParameter("error") != null) { 
+                                String error = request.getParameter("error");
+                                 if(error.equals("NA")){
+                                     %>
+                                             <div class="alert alert-danger" role="alert"><p>Usuario no activo. Pasar con administrador para activar cuenta.</p></div>                                             
                         <%
-                        } /*
-                         2. Hemos ingresado de manera incorrecta el ususario y/o contraseña, por 
-                         lo que mostramos el mensaje correspondiente
-                         */ else {
-                            if (request.getParameter("error") == "NA") {
-                        %>
-                        <div class="alert alert-error">
-                            <strong>Error</strong> Usuario no activo.<br> Por favor,
-                            Acudir al departamento de informática para activar cuenta.
-                        </div>          
-                        <%
-                        } else {
-                            if (request.getParameter("error") == "NE") {
-                        %>
-                        <div class="alert alert-error">
-                            <strong>Error</strong> Usuario y/o contraseña incorrectos
-                        </div>
-                        <%
-                            }
-                                    }
-                                }
+                                 } else{
+                           %>
+                           <div class="alert alert-danger" role="alert"><p>Usuario no existente. Rectificar datos. </p></div>
+                           <%
+                                 }                    
+                        
                             }
                         %>
                         <form class="form-horizontal" role="form" action="validadorSesion.jsp" method="post">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                    <input type="correo" class="form-control" id="inputEmail3">
+                                    <input pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" type="email" name="correo" class="form-control" id="inputEmail3" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="contrasenia" class="form-control" id="inputPassword3">
+                                    <input type="password" name="contrasenia" class="form-control" id="inputPassword3" required>
                                 </div>
                             </div>
                             <div class="form-group">
