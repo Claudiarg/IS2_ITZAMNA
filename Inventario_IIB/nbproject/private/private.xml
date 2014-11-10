@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/web/Equipos/ActualizarEquipos.jsp</file>
-            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/web/Equipos/ActualizarEquiposC.jsp</file>
-            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/web/Equipos/RegistrarEquipo.jsp</file>
+            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/web/InicioSesion.jsp</file>
+            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/src/java/Controlador/Usuario.java</file>
+            <file>file:/home/clau/git/IS2_ITZAMNA/Inventario_IIB/src/java/Conexion/ConexionBD.java</file>
         </group>
     </open-files>
 </project-private>

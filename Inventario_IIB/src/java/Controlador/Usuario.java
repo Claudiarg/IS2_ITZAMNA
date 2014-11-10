@@ -5,6 +5,9 @@
  */
 
 package Controlador;
+import Conexion.ConexionBD;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -18,19 +21,32 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contrasenia;
-    private boolean activo;
-
-    public Usuario() {
+    private int activo; 
+    private int  count;
+    String query;
+    
+    public Usuario(){
+        this.count = 0;        
     }
 
-    public Usuario(int idUsuario, int tipoUsuario, String nombre, String apellido, String correo, String contrasenia, boolean activo) {
-        this.idUsuario = idUsuario;
-        this.tipoUsuario = tipoUsuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
-        this.activo = activo;
+    public Usuario(String correo, String contrasenia) throws ClassNotFoundException, SQLException {
+        this.count = 0;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();        
+        query = "Select * from Usuario where correo = '"+correo+"' and contrasenia= '"+ contrasenia+"';"; 
+        ResultSet result = conexion.consultarBD(query);   
+        
+        while(result.next()){
+            idUsuario = result.getInt(1);                                                               
+            tipoUsuario = result.getInt(2);
+            nombre = result.getString(3);
+            apellido = result.getString(4);
+            this.correo = result.getString(5);
+            this.contrasenia = result.getString(6);
+            activo = result.getInt(7);   
+            count++;
+        }             
+        conexion.desconectarBD();
     }
 
     public int getIdUsuario() {
@@ -81,13 +97,35 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public boolean isActivo() {
+    public int getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setActivo(int activo) {
+        this.activo = activo;       
+    }   
+    public int getCount() {
+        return count;
     }
-    
-    
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+   
+ /*    
+    public static void main (String [ ] args) throws ClassNotFoundException, SQLException {
+        Usuario u = new Usuario("claudia.cirg@gmail.com","30624251");
+        System.out.println("idUsuario "+u.getIdUsuario());
+        System.out.println("activo "+u.getActivo());
+        System.out.println("nombre "+u.getNombre());
+    }*/
 }

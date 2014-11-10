@@ -52,18 +52,49 @@
                 <div id="content"> 
 
                     <div id="main-content">	
-
-                        <form class="form-horizontal" role="form" action=""method="post" >
+                        <%
+                            if (request.getParameter("error") != null) {
+                                if (request.getParameter("login") != null) {
+                        %>
+                        <div class="alert alert-error">
+                            <strong>Error</strong> No has iniciado sesión<br> Por favor,
+                            ingresa correctamente.
+                        </div>
+                        <%
+                        } /*
+                         2. Hemos ingresado de manera incorrecta el ususario y/o contraseña, por 
+                         lo que mostramos el mensaje correspondiente
+                         */ else {
+                            if (request.getParameter("error") == "NA") {
+                        %>
+                        <div class="alert alert-error">
+                            <strong>Error</strong> Usuario no activo.<br> Por favor,
+                            Acudir al departamento de informática para activar cuenta.
+                        </div>          
+                        <%
+                        } else {
+                            if (request.getParameter("error") == "NE") {
+                        %>
+                        <div class="alert alert-error">
+                            <strong>Error</strong> Usuario y/o contraseña incorrectos
+                        </div>
+                        <%
+                            }
+                                    }
+                                }
+                            }
+                        %>
+                        <form class="form-horizontal" role="form" action="validadorSesion.jsp" method="post">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                    <input type="correo" class="form-control" id="inputEmail3">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Contraseña">
+                                    <input type="password" name="contrasenia" class="form-control" id="inputPassword3">
                                 </div>
                             </div>
                             <div class="form-group">
