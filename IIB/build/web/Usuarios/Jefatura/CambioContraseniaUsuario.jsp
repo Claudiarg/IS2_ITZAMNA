@@ -112,7 +112,56 @@
                     <div id="main-content">	
 
                         <h2>Actualizar contraseña de usuario.</h2>
-                        
+                        <div style="margin-left:80px"> 
+
+                            <form class="form-horizontal" action="CambioContraseniaUsValidador.jsp" method="post" role="form">
+                                <div class="form-group"style="margin-right:-850px">                                                                                                                                                                                   
+                                    <br><br>
+                                    <%
+                                        if (request.getParameter("error") != null) {
+                                            String error = request.getParameter("error");
+                                            if (error.equals("Invalida")) {
+                                    %>
+                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Contraseña Actual Invalida.</p></div>                                             
+                                    <%
+                                    } else {
+                                    %>
+                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Nueva contraseña no coincide en ambos campos.</p></div>
+                                    <%
+                                        }
+
+                                    } else {
+                                        if (request.getParameter("exito") != null) {
+                                    %>
+                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>
+                                    <%
+                                            }
+                                        }
+
+                                    %>
+                                    <label class="col-sm-2 control-label">Contraseña Actual:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="password" name="conActual" style="width: 300px" required>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">Nueva Contraseña:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="password" name="nueva"  style="width: 300px" required>
+                                    </div>                                                                                                                                         
+
+                                    <label class="col-sm-2 control-label">Confirma Contraseña:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="password" name="nueva2"  style="width: 300px" required>
+                                    </div>                                                                                                                                         
+
+                                </div>   
+                                <div class="form-group" style="margin-right:-850px">
+                                    <div class="col-sm-offset-2 col-sm-10" >
+                                        <button type="submit" class="btn btn-default">Confirmar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
