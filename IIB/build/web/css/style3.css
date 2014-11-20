@@ -1,0 +1,83 @@
+//Menu *******************************************+++
+
+
+#menu1 {  
+    text-align: center;
+    width: 320px;
+  
+}
+
+#menu1 ul { 
+    list-style-type: none;
+}
+
+#menu1 ul li.nivel1 { 
+    width: 215px;
+    margin-left: -20px;
+}
+
+#menu1 ul li.primera { 
+    border-top: solid 1px #FFF;
+}
+
+#menu1 ul li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #706e43;
+    border: solid 1px #fff;
+    border-top: none;
+    padding: 12px;
+    position: relative;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 0 10px #808FA1;
+}
+
+#menu1 ul li:hover {
+    position: relative;
+    background-color: #333C4D;
+    color: #fff;
+}
+#menu1 ul li a:hover, #menu1 ul li:hover a.nivel1 {
+    background-color: #333C4D;
+    color: #fff;
+    position: relative;
+}
+
+#menu1 ul li a.nivel1 {
+    display: block!important;
+    display: none;
+    position: relative;
+}
+
+#menu1 ul li ul {
+    display: none;
+}
+
+#menu1 ul li a:hover ul, #menu1 ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: 175px;
+    top:-1px!important;
+    top: -31px;
+}
+
+#menu1 ul li ul li a {
+    width: 160px;
+    background-color: #706e43;
+    color: #fff;
+}
+
+#menu1 ul li ul li a:hover {
+    position: relative;
+    background-color: #333C4D;
+    color: #FFF;
+}
+
+table.falsa {
+    border-collapse:collapse;
+    border:0px;
+    float: left;
+    position: relative;
+}
