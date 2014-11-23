@@ -112,199 +112,170 @@
 
                     <div id="main-content">	
 
-                        <h2>Registrar Equipos.</h2>
-                        <form action="RegistrarEquiposC.jsp" method="post">
-                            <div>
-                                <section>
-                                <p>Número de inventario informática <span><input type="text" class="input-group input-group-sm" name="invInf" style="width : 200px" ></span></p>
-                                <p>Número de inventario UNAM <span><input type="text" class="input-group input-group-sm" name="invUNAM" style="width : 200px" "></span></p>
-                                <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInv" style="width : 200px""></span></p>   
-                                <p>Descripción<span><input type="text" class="input-group input-group-sm" name="descripción" style="width : 200px""></span></p>
+                        <h2>Registrar nuevo equipo.</h2>                                                                   
+                          
+                        <!--apartado para mostrar las características del equipo-->  
+                        <form class="form-horizontal" role="form" action="GuardarEquipo.jsp" method="post">
+                            <div id="equipo">
+                                <section id ="izquierda">
+                                    <p>Número de inventario informática:<span><input type="text" class="input-group input-group-sm" name="invInf" style="width : 200px" value="" title="Número de inventario departamento de Informática"></span></p>
+                                    <p>Número de inventario UNAM <span><input type="text" class="input-group input-group-sm" name="invUNAM" style="width : 200px" value="" title="Número de inventario de UNAM"></span></p>
+                                    <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInvD" style="width : 200px"value="" title ="Núemro de inventario de departamento."></span></p>   
+                                    <p>Descripción<span><input type="text" class="input-group input-group-sm" name="descripcion" style="width : 200px"value="" title="Descripción del equipo"></span></p>
+                                    <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px"value="" title="Número de serie"></span></p>
+                                    <p>Fecha de registro<span><input type="text" class="input-group input-group-sm" name="fechaReg" style="width : 200px"value="" title="Fecha de registro"></span></p>
+                                    <p>Fecha de resguardo <span><input type="text" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value="" title="Fecha de resguardo"></span></p>                                    
+                                    <%--<input  type="text" laceholder="click to show datepicker"  id="example1">--%>
+                                    <button class="btn btn-default" type="submit">Guardar</button>          
 
-                                <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px""></span></p>
-                                <p>Fecha de registro<span><input type="text" class="input-group input-group-sm" name="fechaReg" style="width : 200px""></span></p>
-                                <p>Fecha de resguardo <span><input type="text" class="input-group input-group-sm" name="" style="width : 200px"></span></p>
                                 </section>
-                                        <%
-                                        ConexionBD conexion = new ConexionBD();
-                            
-                                        conexion.conectarBD();                            
+
+                                <section id="derecha">
+                                    <%
+                                        ConexionBD c = new ConexionBD();
+                                        c.conectarBD();
                                         ResultSet r;
-                                            ConexionBD con = new ConexionBD();
-                                            con.conectarBD();
+                                        String descripcion;
+                                        int id;
+                                    %>          
 
-                                            r = conexion.consultarBD("SELECT * FROM Clase;");
+                                    <label>Clase:</label>
+                                    <select name="clase"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Clase;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>
+                                                <option value="<%=id%>"><%=descripcion%></option>
+                                          <%}%>                                        
+                                    </select><br> 
 
-                                            String clase1;
-                                            int idclase;
-                                        %><label>Clase:</label><br>
-                                <select name="clase"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idclase = r.getInt(1);
-                                             clase1 = r.getString(2);%>
-                                    <option value="<%=idclase%>"><%=clase1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Estado;");
+                                    <label>Estado:</label>
+                                    <select name="estado"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Estado;");%>
+                                            <option value=""></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>
 
-                                    String estado1;
-                                    int idestado;
-                                    %><label>Estado:</label><br>
-                                <select name="estado" style="text-align: center" style="float: right"><br>
+                                    <label>Estado Físico:</label>
+                                    <select name="estadoF"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM EstadoFisico;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br> 
+
+                                    <label>Familia:</label>
+                                    <select name="familia"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Familia;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>
                                     
-                                    <%
-                                         while (r.next()) {
-                                             idestado = r.getInt(1);
-                                             estado1 = r.getString(2);%>
-                                    <option value="<%=idestado%>"><%=estado1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM EstadoFisico;");
+                                    <label>Marca:</label>
+                                    <select name="marca"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Marca;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br> 
 
-                                    String fisico;
-                                    int idfisico;
-                                    %><label>Estado Fisico:</label><br>
-                                <select name="fisico" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idfisico = r.getInt(1);
-                                             fisico = r.getString(2);%>
-                                    <option value="<%=idfisico%>"><%=fisico%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Familia;");
+                                    <label>Modelo:</label>
+                                    <select name="modelo"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Modelo;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>    
 
-                                    String familia1;
-                                    int idfamilia;
-                                    %><label>Familia:</label><br>
-                                <select name="familia" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idfamilia = r.getInt(1);
-                                             familia1 = r.getString(2);%>
-                                    <option value="<%=idfamilia%>"><%=familia1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Marca;");
+                                    <label>Proveedor:</label>
+                                    <select name="prov"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Proveedor;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br> 
 
-                                    String marca1;
-                                    int idmarca;
-                                    %><label>Marca:</label><br>
-                                <select name="marca" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idmarca = r.getInt(1);
-                                             marca1 = r.getString(2);%>
-                                    <option value="<%=idmarca%>"><%=marca1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Modelo;");
+                                    <label>Responsable:</label>
+                                    <select name="responsable"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Responsable;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>   
 
-                                    String modelo1;
-                                    int idmodelo;
-                                    %><label class="der">Modelo:</label><br>
-                                <select class="der" name="modelo" ><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idmodelo = r.getInt(1);
-                                             modelo1 = r.getString(2);%>
-                                    <option value="<%=idmodelo%>"><%=modelo1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Proveedor;");
-
-                                    String proveedor;
-                                    int idproveedor;
-                                    %><label class="der">Proveedor:</label><br>
-                                <select class="der" name="proveedor" ><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idproveedor = r.getInt(1);
-                                             proveedor = r.getString(2);%>
-                                    <option value="<%=idproveedor%>"><%=proveedor%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Responsable;");
-
-                                    String responsable;
-                                    int idresponsable;
-                                    %><label class="der">Responsable:</label><br>
-                                <select class="der" name="responsable" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idresponsable = r.getInt(1);
-                                             responsable = r.getString(2);%>
-                                    <option value="<%=idresponsable%>"><%=responsable%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Tipo;");
-
-                                    String tipo1;
-                                    int idtipo;
-                                    %><label>Tipo:</label><br>
-                                <select name="tipo" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idtipo = r.getInt(1);
-                                             tipo1 = r.getString(2);%>
-                                    <option value="<%=idtipo%>"><%=tipo1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Ubicacion;");
-
-                                    String ubicacion;
-                                    int idubicacion;
-                                    %><label>Ubicación:</label><br>
-                                <select name="ubicacion" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             idubicacion = r.getInt(1);
-                                             ubicacion = r.getString(2);%>
-                                    <option value="<%=idubicacion%>"><%=ubicacion%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Uso;");
-
-                                    String uso1;
-                                    int iduso;
-                                    %><label>Uso:</label><br>
-                                <select name="uso" style="text-align: center"><br>
-                                    <option value=""></option>
-                                    <%
-                                         while (r.next()) {
-                                             iduso = r.getInt(1);
-                                             uso1 = r.getString(2);%>
-                                    <option value="<%=iduso%>"><%=uso1%></option>
-                                    <%
-                                        }
-                                    %></select><br><%
-                                    con.desconectarBD();
+                                    <label>Tipo:</label>
+                                    <select name="tipo"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Tipo;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>
 
 
-                                    %>                                
+                                    <label>Ubicación:</label>
+                                    <select name="ubicacion"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Ubicacion;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>
+
+                                    <label>Uso:</label>
+                                    <select name="uso"><br>                                  
+                                        <%
+                                            r = c.consultarBD("SELECT * FROM Uso;");%>
+                                            <option value="0"></option>
+                                            <%while (r.next()) {
+                                                id = r.getInt(1);
+                                                descripcion = r.getString(2);%>                                                
+                                        <option value="<%=id%>"><%=descripcion%></option>
+                                        <%}%>
+                                    </select><br>                                     
+                                    <%c.desconectarBD(); %>                                                                                                                                           
+                                </section>                                  
                             </div>
-                            <button class="btn btn-default" type="submit">Guardar</button>          
-                        </form>
+                        </form>                         
+
                         
                     </div>
                 </div>

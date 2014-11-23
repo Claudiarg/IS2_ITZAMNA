@@ -116,8 +116,17 @@
 
                         <h2>Actualizar equipos.</h2>
                         <p>Ingresa el número de inventario del departamento de 
-                            informática.</p>       
-                        <form action="ActualizaeEquiposC.jsp" method="post">                           
+                            informática.</p>  
+                        <%if (request.getParameter("error") != null) { 
+                               String error = request.getParameter("error");
+                               if(error.equals("NE")){%>
+                                 <div class="alert alert-danger" role="alert">No existe el equipo. Verificar el número de inventario 
+                                     del departamento de informática.
+                                 </div>
+                         <%    }  
+                            }
+                         %>                        	                                                        
+                        <form action="ActualizarEquiposC.jsp" method="post">                           
                                 <input type="text" class="input-group input-group-sm" name="numI" style="width : 100px">
                                 <button class="btn btn-default" type="submit">Buscar</button>                            
                         </form>                         

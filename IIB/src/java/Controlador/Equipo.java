@@ -74,18 +74,9 @@ public class Equipo {
 
     }
 
-    /*public int ActualizarEquipo(){
-    int r;
-        
-    return r;
-     
-     
-
-    }*/
-
     public boolean InsertarEquipo(int numInformatica, int numUNAM, int numInv, String descripcion, int marca, int modelo, int serie, int familia, int tipo,int proveedor, String fechaRegistro, int clase, int uso, int nivelObsolescencia, int estadoFisico, int ubicacion, int responsable, String fechaResguardo, int centroDeCosto, int estado) throws ClassNotFoundException, SQLException {
         boolean insert;                
-        String query = "Insert into Equipo(numInformatica, numUNAM, numInv, descripcion, marca, modelo, serie, familia, tipo, proveedor, fechaRegistro, clase, uso, nivelObsolescencia, estadoFisico, ubicacion, responsable, fechaResguardo, centroDeCosto, estado) values ("+numInformatica+","+ numUNAM+", "+numInv+", '"+descripcion+"',"+ marca+", "+modelo+", "+serie+","+familia+", "+tipo+", "+proveedor+", '"+fechaRegistro+"', "+clase+", "+uso+", "+nivelObsolescencia+", "+estadoFisico+", "+ubicacion+", "+responsable+",'"+fechaResguardo+"', "+centroDeCosto+","+estado+");";
+        String query = "Insert into Equipo(idEquipo, numInformatica, numUNAM, numInv, descripcion, marca, modelo, serie, familia, tipo, proveedor, fechaRegistro, clase, uso, nivelObsolescencia, estadoFisico, ubicacion, responsable, fechaResguardo, centroDeCosto, estado) values (0, "+numInformatica+","+ numUNAM+", "+numInv+", '"+descripcion+"',"+ marca+", "+modelo+", "+serie+","+familia+", "+tipo+", "+proveedor+", '"+fechaRegistro+"', "+clase+", "+uso+", "+nivelObsolescencia+", "+estadoFisico+", "+ubicacion+", "+responsable+",'"+fechaResguardo+"', "+centroDeCosto+","+estado+");";
         ConexionBD conexion = new ConexionBD();        
         conexion.conectarBD();
         insert = conexion.insertarBD(query);       
