@@ -3,6 +3,8 @@
     Created on : 12/10/2014, 10:54:09 PM
     Author     : beth
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Conexion.ConexionBD"%>
 <%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -42,7 +44,7 @@
                    </form>                    
             </div>
         </div>
-
+        
         <div id="main">
 
             <div id="main-container" class="container-fluid" role="main">
@@ -110,61 +112,40 @@
 
                     <div id="main-content">	
 
-                        <h2>Cambiar contraseña.</h2>
                         
-                        <div style="margin-left:80px"> 
+                       
+                            <div class="form-group">                                                                
+                                <%
+                                    ConexionBD con = new ConexionBD();
+                                    con.conectarBD();
+                                    int ultimo = 0;
+                                    ResultSet r = con.consultarBD("SELECT MAX(idUsuario) FROM Usuario;");
+                                    while (r.next()) {
+                                        ultimo = r.getInt(1);
+                                        System.out.println("este es el ultimo" + ultimo);
+                                    }
 
-                            <form class="form-horizontal" action="CambioContraseniaV.jsp" method="post" role="form">
-                                <div class="form-group"style="margin-right:-850px">                                                                                                                                                                                   
-                                    <br><br>
-                                    <%
-                                        if (request.getParameter("error") != null) {
-                                            String error = request.getParameter("error");
-                                            if (error.equals("Invalida")) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Contraseña Actual Invalida.</p></div>                                             
-                                    <%
-                                    } else {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Nueva contraseña no coincide en ambos campos.</p></div>
-                                    <%
-                                        }
+                                    String usuario = request.getParameter("usuario");
+                                    String nombre = request.getParameter("nombre");
+                                    String apellido = request.getParameter("apellido");
+                                    String correo = request.getParameter("correo");
+                                    String contrasenia = request.getParameter("contrasenia");                                   
 
-                                    } else {
-                                        if (request.getParameter("exito") != null) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>
-                                    <%
-                                            }
-                                        }
-
-                                    %>
-                                    <label class="col-sm-2 control-label">Contraseña Actual:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="conActual" style="width: 300px" required>
-                                    </div>
-
-                                    <label class="col-sm-2 control-label">Nueva Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                    <label class="col-sm-2 control-label">Confirma Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva2"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                </div>   
-                                <div class="form-group" style="margin-right:-850px">
-                                    <div class="col-sm-offset-2 col-sm-10" >
-                                        <button type="submit" class="btn btn-default">Confirmar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        
+                                    String p="INSERT INTO Usuario (idUsuario, tipoUsuario, nombre, apellido, correo, contrasenia, activo)"+
+                                            " VALUES (" + (ultimo + 1) + ","+usuario+",'"+nombre+"','"+apellido+"','"+correo+"','"+contrasenia+"',1);";
+                                    System.out.println(p);
+                                    con.insertarBD(p);
+                                                                      
+                                    
+                                    
+                                %>
+                                <h3><%=nombre%> <%=apellido%> creado exitosamente.</h3>
+                                <%
+                                    con.desconectarBD();
+                                %>                                
+                            </div>   
+                            
                     </div>
-                </div>
 
 
 

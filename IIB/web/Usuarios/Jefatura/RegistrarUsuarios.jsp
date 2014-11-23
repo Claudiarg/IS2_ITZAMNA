@@ -3,6 +3,8 @@
     Created on : 12/10/2014, 10:54:09 PM
     Author     : beth
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Conexion.ConexionBD"%>
 <%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -37,13 +39,12 @@
 
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
-                <ul class="nav navbar-nav nav-pills">                    
-                    <li id="nav-search"><a href="../../cerrarSesion.jsp" onclick="menu('search');">Salir</a></li>
-                    
-                </ul>
+                <form method="post" action="../../cerrarSesion.jsp">               
+                       <button type="submit" id="cerrarS">Salir</button>                                 
+                   </form>                    
             </div>
         </div>
-
+        
         <div id="main">
 
             <div id="main-container" class="container-fluid" role="main">
@@ -89,10 +90,10 @@
                                     <a class="nivel1">Catálogos</a>
                                     <ul>
                                         <li>
-                                            <a href="">Crear</a>
+                                            <a href="AgregarCatalogo.jsp">Crear</a>
                                         </li>
                                         <li>
-                                            <a>Consultar</a>
+                                            <a href="consultarCatalogos.jsp">Consultar</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -112,6 +113,58 @@
                     <div id="main-content">	
 
                         <h2>Registrar usuarios.</h2>
+                                                <div style="margin-left:170px">
+                            <form class="form-horizontal" action="RegistraUsuariosV.jsp" method="post" role="form">
+                                <div class="form-group" style="margin-right:-50px">                                                                                                                                                     
+                                    <%
+                                        ConexionBD con = new ConexionBD();
+                                        con.conectarBD();
+
+                                        ResultSet r = con.consultarBD("SELECT * FROM TipoUsuario;");
+
+                                        String usuario;
+                                        int idusuario;
+                                    %>
+                                    <label class="col-sm-2 control-label">Tipo de Usuario:</label><br>
+                                    <div class="col-sm-10">
+                                        <select name="usuario">                                        
+                                            <%
+                                                while (r.next()) {
+                                                    idusuario = r.getInt(1);
+                                                    usuario = r.getString(2);%>
+                                            <option value="<%=idusuario%>"><%=usuario%></option>
+                                            <%
+                                                }
+                                            %></select><br><br>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">Nombre:</label><br>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="nombre" pattern="[a-zA-Z]+" title="Se necesita un nombre" style="width: 300px" required>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">Apellido:</label><br>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="apellido" pattern="[a-zA-Z]+" title="Se necesita pellido" style="width: 300px" required>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">Correo:</label><br>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="email"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" name="correo" title="ejemplo@dominio.com" style="width: 300px" required>
+                                    </div>
+
+                                    <label class="col-sm-2 control-label">Contraseña:</label><br>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" maxlength="10" type="password" name="contrasenia" title="Maximo 10 caracteres" style="width: 300px" required> 
+                                    </div>
+                                </div> 
+                                <div class="form-group" style="margin-right:-850px">
+                                    <div class="col-sm-offset-2 col-sm-10" >
+                                        <button type="submit" class="btn btn-default">Crear</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         
                     </div>
                 </div>

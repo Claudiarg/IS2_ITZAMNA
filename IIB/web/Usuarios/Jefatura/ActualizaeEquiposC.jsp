@@ -41,10 +41,9 @@
 
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
-                <ul class="nav navbar-nav nav-pills">                    
-                    <li id="nav-search"><a href="../../cerrarSesion.jsp" onclick="menu('search');">Salir</a></li>
-                    
-                </ul>
+                <form method="post" action="../../cerrarSesion.jsp">               
+                    <button type="submit" id="cerrarS">Salir</button>                                 
+                </form>                    
             </div>
         </div>
 
@@ -93,10 +92,10 @@
                                     <a class="nivel1">Catálogos</a>
                                     <ul>
                                         <li>
-                                            <a href="">Crear</a>
+                                            <a href="AgregarCatalogo.jsp">Crear</a>
                                         </li>
                                         <li>
-                                            <a>Consultar</a>
+                                            <a href="consultarCatalogos.jsp">Consultar</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -173,12 +172,16 @@
                                     <%
                                          while (r.next()) {
                                              idclase = r.getInt(1);
-                                             clase1 = r.getString(2);%>
+                                             clase1 = r.getString(2);
+                                    if(idclase == clase){%>
+                                    <option selected value="<%=idclase%>"><%=clase1%></option>
+                                    <%}else{%>
                                     <option value="<%=idclase%>"><%=clase1%></option>
                                     <%
                                         }
+                                        }
                                     %></select><br><%
-                                    r = con.consultarBD("SELECT * FROM Estado;");
+                                    r =<a href="consultarCatalogos.jsp">Consultar</a> con.consultarBD("SELECT * FROM Estado;");
 
                                     String estado1;
                                     int idestado;
@@ -188,10 +191,13 @@
                                     <%
                                          while (r.next()) {
                                              idestado = r.getInt(1);
-                                             estado1 = r.getString(2);%>
+                                             estado1 = r.getString(2);
+                                         if(idestado == estado){%>
+                                    <option selected value="<%=idestado%>"><%=estado1%></option>
+                                    <%} else {%>
                                     <option value="<%=idestado%>"><%=estado1%></option>
-                                    <%
-                                        }
+                                        <%}
+                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM EstadoFisico;");
 
@@ -203,10 +209,13 @@
                                     <%
                                          while (r.next()) {
                                              idfisico = r.getInt(1);
-                                             fisico = r.getString(2);%>
+                                             fisico = r.getString(2);
+                                    if(idfisico == estadoF){%>
+                                    <option selected value="<%=idfisico%>"><%=fisico%></option>
+                                    <%} else {%>
                                     <option value="<%=idfisico%>"><%=fisico%></option>
-                                    <%
-                                        }
+                                        <%}
+                                    }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Familia;");
 
@@ -218,10 +227,13 @@
                                     <%
                                          while (r.next()) {
                                              idfamilia = r.getInt(1);
-                                             familia1 = r.getString(2);%>
+                                             familia1 = r.getString(2);
+                                    if(idfamilia == familia){%>
+                                    <option selected value="<%=idfamilia%>"><%=familia1%></option>
+                                    <%} else { %>
                                     <option value="<%=idfamilia%>"><%=familia1%></option>
-                                    <%
-                                        }
+                                        <%}
+                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Marca;");
 
@@ -233,9 +245,12 @@
                                     <%
                                          while (r.next()) {
                                              idmarca = r.getInt(1);
-                                             marca1 = r.getString(2);%>
+                                             marca1 = r.getString(2);
+                                    if(idmarca == marca){%>
+                                    <option selected value="<%=idmarca%>"><%=marca1%></option>
+                                    <%}else {%>
                                     <option value="<%=idmarca%>"><%=marca1%></option>
-                                    <%
+                                    <%}
                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Modelo;");
@@ -248,10 +263,13 @@
                                     <%
                                          while (r.next()) {
                                              idmodelo = r.getInt(1);
-                                             modelo1 = r.getString(2);%>
+                                             modelo1 = r.getString(2);
+                                    if(idmodelo == modelo){%>
+                                    <option selected value="<%=idmodelo%>"><%=modelo1%></option>
+                                    <%} else {%>
                                     <option value="<%=idmodelo%>"><%=modelo1%></option>
-                                    <%
-                                        }
+                                        <%}
+                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Proveedor;");
 
@@ -263,9 +281,12 @@
                                     <%
                                          while (r.next()) {
                                              idproveedor = r.getInt(1);
-                                             proveedor = r.getString(2);%>
-                                    <option value="<%=idproveedor%>"><%=proveedor%></option>
-                                    <%
+                                             proveedor = r.getString(2);
+                                    if(idproveedor == prov){%>
+                                    <option selected value="<%=idproveedor%>"><%=proveedor%></option>
+                                    <%}else{%>
+                                        <option value="<%=idproveedor%>"><%=proveedor%></option>
+                                    <%}
                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Responsable;");
@@ -278,10 +299,14 @@
                                     <%
                                          while (r.next()) {
                                              idresponsable = r.getInt(1);
-                                             responsable = r.getString(2);%>
+                                             responsable = r.getString(2);
+                                    if(idresponsable == resp){%>
+                                    <option selected value="<%=idresponsable%>"><%=responsable%></option>
+                                    <%} else {%>
                                     <option value="<%=idresponsable%>"><%=responsable%></option>
                                     <%
-                                        }
+                                    }
+                                    }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Tipo;");
 
@@ -293,10 +318,13 @@
                                     <%
                                          while (r.next()) {
                                              idtipo = r.getInt(1);
-                                             tipo1 = r.getString(2);%>
+                                             tipo1 = r.getString(2);
+                                    if(idtipo == tipo){%>
+                                    <option selected value="<%=idtipo%>"><%=tipo1%></option>
+                                    <%} else {%>
                                     <option value="<%=idtipo%>"><%=tipo1%></option>
-                                    <%
-                                        }
+                                        <%}
+                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Ubicacion;");
 
@@ -308,10 +336,13 @@
                                     <%
                                          while (r.next()) {
                                              idubicacion = r.getInt(1);
-                                             ubicacion = r.getString(2);%>
+                                             ubicacion = r.getString(2);
+                                    if(idubicacion == ub){%>
+                                    <option selected value="<%=idubicacion%>"><%=ubicacion%></option>
+                                    <%} else {%>
                                     <option value="<%=idubicacion%>"><%=ubicacion%></option>
-                                    <%
-                                        }
+                                        <%}
+                                         }
                                     %></select><br><%
                                     r = con.consultarBD("SELECT * FROM Uso;");
 
@@ -323,10 +354,14 @@
                                     <%
                                          while (r.next()) {
                                              iduso = r.getInt(1);
-                                             uso1 = r.getString(2);%>
+                                             uso1 = r.getString(2);
+                                    if(iduso == uso){%>
+                                    <option selected value="<%=iduso%>"><%=uso1%></option>
+                                    <%} else {%>
                                     <option value="<%=iduso%>"><%=uso1%></option>
-                                    <%
-                                        }
+                                        <%
+                                    }
+                                    }
                                     %></select><br><%
                                     con.desconectarBD();
 

@@ -1,10 +1,13 @@
 <%-- 
-    Document   : VistaTecnico
-    Created on : 12/11/2014, 02:07:14 AM
+    Document   : VistaSecretaria
+    Created on : 12/11/2014, 02:03:36 AM
     Author     : beth
 --%>
-<%@page session ="true" %>
+
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Conexion.ConexionBD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +50,7 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Técnico Académico</small> </h1>
+                    <h1><small>Secretaria</small> </h1>
                 </div>
 
                 <div id="content" > 
@@ -59,21 +62,33 @@
                                     <a class="nivel1">Equipos</a>
                                     <ul>
                                         <li>
-                                            <a href="ActualizarEquipo.jsp">Actualizar</a>
+                                            <a href="RegistrarEquipos.jsp">Registrar</a>
+                                        </li>
+                                        <li>
+                                            <a href="ActualizarEquipos.jsp">Actualizar</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Movimientos</a>
+                                </li>
+                                <li class="nivel1 primera">
+                                    <a class="nivel1">Usuarios</a>
                                     <ul>
                                         <li>
-                                            <a href="BajaEquipos.jsp">Bajas</a>
+                                            <a  href="RegistrarUsuario.jsp">Registrar</a>
                                         </li>
                                         <li>
-                                            <a href="AsignarEquipo.jsp">Asignación</a>
+                                            <a href="BajaUsuario.jsp" >Dar de Baja</a>
+                                        </li>
+                                        <li>
+                                            <a href="ContraseniaUsuario.jsp">Nueva Contraseña</a>
                                         </li>
                                     </ul>
-                                </li>                                                                
+                                </li>                               
+                                <li class="nivel1 primera">
+                                    <a href="Consultas.jsp" class="nivel1">Consultas</a>
+                                </li>
                                 <li class="nivel1 primera">
                                     <a href="CambiarContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
@@ -86,8 +101,39 @@
 
                     <div id="main-content">	
 
-                        <h2>Actualiza equipo.</h2>
-                        
+                                                    <div class="form-group">                                                                
+                                <%
+                                    ConexionBD con = new ConexionBD();
+                                    con.conectarBD();
+                                    int ultimo = 0;
+                                    ResultSet r = con.consultarBD("SELECT MAX(idUsuario) FROM Usuario;");
+                                    while (r.next()) {
+                                        ultimo = r.getInt(1);
+                                        System.out.println("este es el ultimo" + ultimo);
+                                    }
+
+                                    String usuario = request.getParameter("usuario");
+                                    String nombre = request.getParameter("nombre");
+                                    String apellido = request.getParameter("apellido");
+                                    String correo = request.getParameter("correo");
+                                    String contrasenia = request.getParameter("contrasenia");                                   
+
+                                    String p="INSERT INTO Usuario (idUsuario, tipoUsuario, nombre, apellido, correo, contrasenia, activo)"+
+                                            " VALUES (" + (ultimo + 1) + ","+usuario+",'"+nombre+"','"+apellido+"','"+correo+"','"+contrasenia+"',1);";
+                                    System.out.println(p);
+                                    con.insertarBD(p);
+                                                                      
+                                    
+                                    
+                                %>
+                                <h3><%=nombre%> <%=apellido%> creado exitosamente.</h3>
+                                <%
+                                    con.desconectarBD();
+                                %>                                
+                            </div>   
+                            
+                    </div>
+                                      
                     </div>
                 </div>
 
@@ -114,8 +160,5 @@
         <script src=" ../../js/async_content.js"></script>
         <script src=" ../../js/async-consulta.js"></script>
         <script src=" ../../js/async_contact.js"></script>
-
-
-
     </body>
 </html>

@@ -110,58 +110,44 @@
 
                     <div id="main-content">	
 
-                        <h2>Cambiar contraseña.</h2>
+                        <%
+                            if (request.getParameter("v") != null) {
+                        %>
+                        <div class="alert alert-success" role="alert"><p style="text-align:center">
+                                <b>Se agrego exitosamente.</b></p></div>
+                        <%
+                            }
+                        %>
                         
-                        <div style="margin-left:80px"> 
+                        <h3 style='text-align: center'>Elige el nombre del Catálogo:</h3>
 
-                            <form class="form-horizontal" action="CambioContraseniaV.jsp" method="post" role="form">
-                                <div class="form-group"style="margin-right:-850px">                                                                                                                                                                                   
-                                    <br><br>
-                                    <%
-                                        if (request.getParameter("error") != null) {
-                                            String error = request.getParameter("error");
-                                            if (error.equals("Invalida")) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Contraseña Actual Invalida.</p></div>                                             
-                                    <%
-                                    } else {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Nueva contraseña no coincide en ambos campos.</p></div>
-                                    <%
-                                        }
+                        <form class="form-horizontal" action="AgregarEementoV.jsp" method="post">
+                            <div class="form-group">
+                                <select name="tabla" style='margin-left: 309px; width: 180px; height: 35px'>
+                                    <option value="CentroDeCosto">Centro de Costo</option>
+                                    <option value="Clase">Clase</option>
+                                    <option value="Estado">Estado</option>
+                                    <option value="EstadoFisico">Estado Físico</option>
+                                    <option value="Familia">Familia</option>
+                                    <option value="Marca">Marca</option>
+                                    <option value="Modelo">Modelo</option>
+                                    <option value="NivelObsolescencia">Nivel Obsolescencia</option>
+                                    <option value="Proveedor">Proveedor</option>
+                                    <option value="Responsable">Responsable</option>
+                                    <option value="Tipo">Tipo</option>
+                                    <option value="Ubicacion">Ubicación</option>
+                                    <option value="Uso">Uso</option>                                    
+                                </select><br>
 
-                                    } else {
-                                        if (request.getParameter("exito") != null) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>
-                                    <%
-                                            }
-                                        }
-
-                                    %>
-                                    <label class="col-sm-2 control-label">Contraseña Actual:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="conActual" style="width: 300px" required>
-                                    </div>
-
-                                    <label class="col-sm-2 control-label">Nueva Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                    <label class="col-sm-2 control-label">Confirma Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva2"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                </div>   
-                                <div class="form-group" style="margin-right:-850px">
-                                    <div class="col-sm-offset-2 col-sm-10" >
-                                        <button type="submit" class="btn btn-default">Confirmar</button>
-                                    </div>
+                                <h3 style='margin-left: 309px'>Nombre del Nuevo Elemento:</h3>
+                                <input style='margin-left: 309px'type="text" name="nuevo" required><br><br>
+                            </div>                            
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button style="margin-left: 156px" type="submit" class="btn btn-default">Siguiente</button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                         
                     </div>
                 </div>

@@ -43,12 +43,9 @@
 
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
-                <ul class="nav navbar-nav nav-pills">                    
-                    <li id="nav-search">	<a  href="../../cerrarSesion.jsp" onclick="menu('search');">Salir</a></li>
-
-
-                    <!-- <li><a >Acceso</a></li> -->
-                </ul>
+                <form method="post" action="../../cerrarSesion.jsp">               
+                       <button type="submit" id="cerrarS">Salir</button>                                 
+                   </form>                    
             </div>
         </div>
 

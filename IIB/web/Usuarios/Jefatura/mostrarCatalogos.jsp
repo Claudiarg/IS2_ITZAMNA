@@ -3,6 +3,8 @@
     Created on : 12/10/2014, 10:54:09 PM
     Author     : beth
 --%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Conexion.ConexionBD"%>
 <%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -110,58 +112,33 @@
 
                     <div id="main-content">	
 
-                        <h2>Cambiar contraseña.</h2>
-                        
-                        <div style="margin-left:80px"> 
+                                                <div class="form-group">
+                            <%
+                                ConexionBD con = new ConexionBD();
+                                con.conectarBD();
+                                String tabla = request.getParameter("tabla");
+                                String p = "SELECT * FROM " + tabla + ";";
+                                ResultSet r = con.consultarBD(p);
 
-                            <form class="form-horizontal" action="CambioContraseniaV.jsp" method="post" role="form">
-                                <div class="form-group"style="margin-right:-850px">                                                                                                                                                                                   
-                                    <br><br>
-                                    <%
-                                        if (request.getParameter("error") != null) {
-                                            String error = request.getParameter("error");
-                                            if (error.equals("Invalida")) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Contraseña Actual Invalida.</p></div>                                             
-                                    <%
-                                    } else {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Nueva contraseña no coincide en ambos campos.</p></div>
+                            %>
+                            <table class="table table-striped">
+                                <tr>
+                                    <td><b>Lista del Catálogo <%=tabla%></td>                                    
+                                </tr>
+                                <%
+                                    while (r.next()) {
+                                        String descripcion = r.getString(2);
+                                %>
+                                <tr><td><%=descripcion%></td></tr>
+
                                     <%
                                         }
-
-                                    } else {
-                                        if (request.getParameter("exito") != null) {
                                     %>
-                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>
-                                    <%
-                                            }
-                                        }
-
-                                    %>
-                                    <label class="col-sm-2 control-label">Contraseña Actual:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="conActual" style="width: 300px" required>
-                                    </div>
-
-                                    <label class="col-sm-2 control-label">Nueva Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                    <label class="col-sm-2 control-label">Confirma Contraseña:</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="nueva2"  style="width: 300px" required>
-                                    </div>                                                                                                                                         
-
-                                </div>   
-                                <div class="form-group" style="margin-right:-850px">
-                                    <div class="col-sm-offset-2 col-sm-10" >
-                                        <button type="submit" class="btn btn-default">Confirmar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </table>
+                            <%
+                                con.desconectarBD();
+                            %>
+                        </div>  
                         
                     </div>
                 </div>

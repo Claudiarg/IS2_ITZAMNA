@@ -89,10 +89,10 @@
                                     <a class="nivel1">Catálogos</a>
                                     <ul>
                                         <li>
-                                            <a href="">Crear</a>
+                                            <a href="AgregarCatalogo.jsp">Crear</a>
                                         </li>
                                         <li>
-                                            <a>Consultar</a>
+                                            <a href="consultarCatalogos.jsp">Consultar</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -112,6 +112,45 @@
                     <div id="main-content">	
 
                         <h2>Dar de baja a usuarios.</h2>
+                        <%
+                            if (request.getParameter("error") != null) {
+                                String error = request.getParameter("error");
+                                if (error.equals("NA")) {
+                        %>
+                        <div class="alert alert-danger" role="alert"><p style="text-align:center">Usuario esta dado de baja.</p></div>                                             
+                        <%
+                        } else {
+                        %>
+                        <div class="alert alert-danger" role="alert"><p style="text-align:center">Usuario no existente.</p></div>
+                        <%
+                            }
+
+                        } else {
+                            if (request.getParameter("exito") != null) {
+                        %>
+                        <div class="alert alert-success" role="alert"><p style="text-align:center"><b>El Usuario ha sido dado de baja.</b></p></div>
+                        <%
+                                }
+                            }
+
+                        %>
+                        <form class="form-horizontal" role="form" action="BajaUsuariosV.jsp" method="post">
+                            <div class="form-group" style="margin-right:-850px">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Correo:</label>
+                                <div class="col-sm-10">
+                                    <input style="width:300px" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" type="email" name="correo" class="form-control" id="inputEmail3" required>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">                                    
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-right:-850px">
+                                <div class="col-sm-offset-2 col-sm-10" >
+                                    <button type="submit" class="btn btn-default">Dar de Baja</button>
+                                </div>
+                            </div>
+                        </form>
                         
                     </div>
                 </div>
