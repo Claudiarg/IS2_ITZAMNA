@@ -125,6 +125,15 @@
                                  </div>
                          <%    }  
                             }
+                            if(request.getParameter("action") != null){
+                                String action = request.getParameter("action");
+                                if(action.equals("true")){%>                                    
+                                    <div class="alert alert-success" role="alert"> Equipo actualizado exitosamente</div>
+                                <%}else{%>
+                                <div class="alert alert-danger" role="alert">Se generó un fallo al guardar la actualización del equipo. Vuelve a intentar.</div>
+                                <%}
+                                
+                            }
                          %>                        	                                                        
                         <form action="ActualizarEquiposC.jsp" method="post">                           
                                 <input type="text" class="input-group input-group-sm" name="numI" style="width : 100px">

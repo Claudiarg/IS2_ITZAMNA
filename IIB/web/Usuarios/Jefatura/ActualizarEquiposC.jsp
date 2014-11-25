@@ -119,31 +119,42 @@
                             Equipo e = new Equipo(nI);
                             if (e.getCount() == 0) {//si es distinto a 0 entonces al menos existe 1
                                 response.sendRedirect("ActualizarEquipos.jsp?error=NE");
-                            }%>
+                            } else {%>
                         <!--apartado para mostrar las características del equipo-->  
                         <form class="form-horizontal" role="form" action="GuardarEquipo.jsp" method="post">
+                            <%
+                                ConexionBD c = new ConexionBD();
+                                c.conectarBD();
+                                ResultSet r;
+                                String descripcion="";
+                                int id;
+                            %>
                             <div id="equipo">
                                 <section id ="izquierda">
                                     <p>Número de inventario informática:<%= e.getNumInformatica()%></p><input type="hidden" name="invInf" value="<%= e.getNumInformatica()%>">
-                                    <p>Número de inventario UNAM <span><input type="text" class="input-group input-group-sm" name="invUNAM" style="width : 200px" value="<%= e.getNumUNAM()%>"></span></p>
+                                                                                <%
+                                                String estado = Integer.toString(e.getEstado());
+                                                r = c.consultarBD("SELECT * FROM Estado where idEstado =" + estado + ";");
+                                                while (r.next()) {
+                                                    id = r.getInt(1);
+                                                    descripcion = r.getString(2);
+                                                }
+                                            %>
+                                    <p>Estado: <label><%=descripcion%></label> </p>
+                                    <p>Número de inventario UNAM <span><input type="text" pattern ="[0-9]{8}"title="Campo de sólo números 8 dígitos" class="input-group input-group-sm" name="invUNAM" style="width : 200px" value="<%= e.getNumUNAM()%>"></span></p>
                                     <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInvD" style="width : 200px"value="<%= e.getNumDepto()%>"></span></p>   
                                     <p>Descripción<span><input type="text" class="input-group input-group-sm" name="descripcion" style="width : 200px"value="<%= e.getDescripcion()%>"></span></p>
                                     <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px"value="<%= e.getSerie()%>"></span></p>
-                                    <p>Fecha de registro<span><input type="text" class="input-group input-group-sm" name="fechaReg" style="width : 200px"value=""></span></p>
-                                    <p>Fecha de resguardo <span><input type="text" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value=""></span></p>                                    
-                                            <%--<input  type="text" laceholder="click to show datepicker"  id="example1">--%>
+                                    <p>Fecha de registro<span><input type="date" title= "Formato de fecha: AAAA-MM-DD"  class="input-group input-group-sm" name="fechaReg" style="width : 200px"value=""></span></p>
+                                    <p>Fecha de resguardo <span><input type="date" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value=""></span></p>                                                                                
+     
+                                    
                                     <button class="btn btn-default" type="submit">Guardar</button>          
 
                                 </section>
 
                                 <section id="derecha">
-                                    <%
-                                        ConexionBD c = new ConexionBD();
-                                        c.conectarBD();
-                                        ResultSet r;
-                                        String descripcion;
-                                        int id;
-                                    %>          
+
 
                                     <label>Clase:</label>
                                     <select name="clase"><br>                                  
@@ -164,28 +175,7 @@
                                                 }
                                             }
                                         %>
-                                    </select><br> 
-
-                                    <label>Estado:</label>
-                                    <select name="estado"><br>                                  
-                                        <%
-                                            r = c.consultarBD("SELECT * FROM Estado;");
-                                            while (r.next()) {
-                                                id = r.getInt(1);
-                                                descripcion = r.getString(2);
-                                                if (id == e.getEstado()) {%>
-                                        <option selected value="<%=id%>"><%=descripcion%></option>
-                                        <%} else {
-                                            if (id == 0) {%>
-                                        <option value="0"></option>
-                                        <%} else {%>
-                                        <option value="<%=id%>"><%=descripcion%></option>
-                                        <%
-                                                    }
-                                                }
-                                            }
-                                        %>
-                                    </select><br>
+                                    </select><br>                                     
 
                                     <label>Estado Físico:</label>
                                     <select name="estadoF"><br>                                  
@@ -228,6 +218,7 @@
                                             }
                                         %>
                                     </select><br>
+
                                     <label>Marca:</label>
                                     <select name="marca"><br>                                  
                                         <%
@@ -269,7 +260,7 @@
                                             }
                                             }
                                         %>
-                                    </select><br>    
+                                    </select><br> 
 
                                     <label>Proveedor:</label>
                                     <select name="prov"><br>                                  
@@ -290,7 +281,7 @@
                                             }
                                             }
                                         %>
-                                    </select><br> 
+                                    </select><br>
 
                                     <label>Responsable:</label>
                                     <select name="responsable"><br>                                  
@@ -311,7 +302,7 @@
                                             }
                                             }
                                         %>
-                                    </select><br>   
+                                    </select><br> 
 
                                     <label>Tipo:</label>
                                     <select name="tipo"><br>                                  
@@ -333,9 +324,8 @@
                                             }
                                             }
                                         %>
-                                    </select><br>
-
-
+                                    </select><br>    
+                                    
                                     <label>Ubicación:</label>
                                     <select name="ubicacion"><br>                                  
                                         <%
@@ -356,7 +346,6 @@
                                             }
                                         %>
                                     </select><br>
-
                                     <label>Uso:</label>
                                     <select name="uso"><br>                                  
                                         <%
@@ -376,7 +365,11 @@
                                             }
                                             }
                                         %>
-                                    </select><br>                                     
+                                    </select><br>                                       
+                                    
+
+
+
                                     <%c.desconectarBD(); %>                                                                                                                                           
 
 
