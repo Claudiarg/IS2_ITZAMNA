@@ -114,7 +114,7 @@
                     <div id="main-content">	
 
                         <h2>Actualizar equipo.</h2>
-                        <%
+                        <%  
                             int nI = Integer.parseInt(request.getParameter("numI"));
                             Equipo e = new Equipo(nI);
                             if (e.getCount() == 0) {//si es distinto a 0 entonces al menos existe 1
@@ -132,6 +132,7 @@
                             <div id="equipo">
                                 <section id ="izquierda">
                                     <p>Número de inventario informática:<%= e.getNumInformatica()%></p><input type="hidden" name="invInf" value="<%= e.getNumInformatica()%>">
+                                    <input type="hidden" name="create" value="false">
                                                                                 <%
                                                 String estado = Integer.toString(e.getEstado());
                                                 r = c.consultarBD("SELECT * FROM Estado where idEstado =" + estado + ";");
@@ -145,8 +146,8 @@
                                     <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInvD" style="width : 200px"value="<%= e.getNumDepto()%>"></span></p>   
                                     <p>Descripción<span><input type="text" class="input-group input-group-sm" name="descripcion" style="width : 200px"value="<%= e.getDescripcion()%>"></span></p>
                                     <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px"value="<%= e.getSerie()%>"></span></p>
-                                    <p>Fecha de registro<span><input type="date" title= "Formato de fecha: AAAA-MM-DD"  class="input-group input-group-sm" name="fechaReg" style="width : 200px"value=""></span></p>
-                                    <p>Fecha de resguardo <span><input type="date" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value=""></span></p>                                                                                
+                                    <p>Fecha de registro<span><input type="text" title= "Formato de fecha: AAAA-MM-DD"  class="input-group input-group-sm" name="fechaReg" style="width : 200px"value="<%= e.getFechaRegistro() %>"></span></p>
+                                    <p>Fecha de resguardo <span><input type="text" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value="<%= e.getFechaResguardo() %>"></span></p>                                                                                
      
                                     
                                     <button class="btn btn-default" type="submit">Guardar</button>          

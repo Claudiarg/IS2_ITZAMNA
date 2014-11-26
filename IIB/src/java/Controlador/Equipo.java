@@ -37,8 +37,24 @@ public class Equipo {
     private int centroCosto;
     private int estado;
     private int count = 0;
+    private boolean creado = false;
 
-    public Equipo() {
+    public Equipo() throws ClassNotFoundException, SQLException{
+    //INSERT INTO `Inventario_IIB`.`Usuario` (`tipoUsuario`, `nombre`, `apellido`, `correo`, `contrasenia`) VALUES ('3', 'Cesar ', 'Ortiz Alarcon', 'cesar@gmail.com', '1234');
+        ConexionBD c = new ConexionBD();
+        c.conectarBD();
+        int equipo = 23456;
+        String query = "insert into Equipo (idEquipo) values (0)";        
+        boolean a = c.insertarBD(query);                
+            query = "select max(idEquipo) AS idEqui FROM Equipo";
+            ResultSet r = c.consultarBD(query);
+            while(r.next()){
+               equipo = r.getInt(1);                
+                this.creado = true;
+                System.out.println("Si ingrese a while para asignar el id");
+            }
+            this.idEquipo = equipo;        
+        c.desconectarBD();
     }
 
     public Equipo(int numInv) throws ClassNotFoundException, SQLException {
@@ -106,15 +122,23 @@ public class Equipo {
     }
 
     /*public int setIdEquipo(int idEquipo) throws ClassNotFoundException, SQLException {
-        this.idEquipo = idEquipo;                
-        int update;
-        String query = "Update Equipo set  idEquipo " + idEquipo + "   where idEquipo= " + this.idEquipo;
-        ConexionBD conexion = new ConexionBD();
-        conexion.conectarBD();
-        update = conexion.actualizarBD(query);
-        return update;
-        
+    this.idEquipo = idEquipo;
+    int update;
+    String query = "Update Equipo set  idEquipo " + idEquipo + "   where idEquipo= " + this.idEquipo;
+    ConexionBD conexion = new ConexionBD();
+    conexion.conectarBD();
+    update = conexion.actualizarBD(query);
+    return update;
     }*/
+    public boolean isCreado() {
+        return creado;
+    }
+
+    public void setCreado(boolean creado) {
+        this.creado = creado;
+    }
+    
+    
 
     public int getNumInformatica() {
         return numInformatica;
@@ -405,7 +429,7 @@ public class Equipo {
         this.count = count;
     }
 
-   /* public static void main(String Args[]) throws ClassNotFoundException, SQLException {
+    /*public static void main(String Args[]) throws ClassNotFoundException, SQLException {
 /*        int inv = 1;
         //String nInv = Integer.toString(inv);
         Equipo e = new Equipo(inv);
@@ -424,6 +448,10 @@ public class Equipo {
         String fecha = "2015-12-12";         
         boolean inserto = e.InsertarEquipo(cat, cat, c2, x, cat, cat, cat, cat, cat, cat, fecha, cat, cat, cat, cat, cat, cat,fecha , cat,cat);        
             System.out.println("Si insertó y el id es: "+e.getIdEquipo());
+    }
+        Equipo e = new Equipo();
+        System.out.println("El equipo fue creado? "+e.isCreado());
+        System.out.println("El id del nuevo equipo es: "+ e.getIdEquipo());
+        
     }*/
-
 }

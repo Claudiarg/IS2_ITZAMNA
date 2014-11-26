@@ -118,13 +118,14 @@
                         <form class="form-horizontal" role="form" action="GuardarEquipo.jsp" method="post">
                             <div id="equipo">
                                 <section id ="izquierda">
+                                    <input type="hidden" value="true" name="create">
                                     <p>Número de inventario informática:<span><input type="text" pattern ="[0-9]{6}" class="input-group input-group-sm" name="invInf" style="width : 200px" value="" title="Campo de sólo números 6 dígitos"></span></p>
                                     <p>Número de inventario UNAM <span><input type="text" pattern ="[0-9]{8}" class="input-group input-group-sm" name="invUNAM" style="width : 200px" value="" title="Campo de sólo números 8 dígitos"></span></p>
                                     <p>Número de inventario departamento<span><input type="text" class="input-group input-group-sm" name="numInvD" style="width : 200px"value="" title ="Campo de sólo números"></span></p>   
                                     <p>Descripción<span><input type="text" class="input-group input-group-sm" name="descripcion" style="width : 200px"value="" title="Descripción del equipo"></span></p>
                                     <p>Serie<span><input type="text" class="input-group input-group-sm" name="serie" style="width : 200px"value="" title="Número de serie"></span></p>
-                                    <p>Fecha de registro<span><input type="date" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaReg" style="width : 200px"value=""></span></p>
-                                    <p>Fecha de resguardo <span><input type="date" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value=""></span></p>                                                                        
+                                    <p>Fecha de registro<span><input type="text" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaReg" style="width : 200px"value=""></span></p>
+                                    <p>Fecha de resguardo <span><input type="text" title= "Formato de fecha: AAAA-MM-DD" class="input-group input-group-sm" name="fechaRes" style="width : 200px"value=""></span></p>                                                                        
                                     <button class="btn btn-default" type="submit">Guardar</button>          
 
                                 </section>
