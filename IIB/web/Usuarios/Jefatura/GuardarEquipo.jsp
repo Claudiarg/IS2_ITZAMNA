@@ -93,7 +93,12 @@
             System.out.println("Valor invUNAM es:" + request.getParameter("uso"));
             System.out.println("Ingresé valor de uso");
         }
-        response.sendRedirect("ActualizarEquipos.jsp?action=true");
+        if(create.equals("true")){        
+        response.sendRedirect("InicioJefatura.jsp?action=true"); 
+        }
+        else{
+         response.sendRedirect("ActualizarEquipos.jsp?action=true");
+        }
     } catch (SQLException s) {
         response.sendRedirect("ActualizarEquipos.jsp?action=false");
 

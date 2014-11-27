@@ -111,6 +111,15 @@
                     <div id="main-content">	
 
                         <h2>Bienvenido</h2>
+                        <%
+                        if(request.getParameter("action") != null){
+                                String action = request.getParameter("action");
+                                if(action.equals("true")){%>                                    
+                                    <div class="alert alert-success" role="alert"> Equipo ingresado al sistema de forma exitosa</div>
+                                <%}else{%>
+                                <div class="alert alert-danger" role="alert">Se generó un fallo al guardar la actualización del equipo. Vuelve a intentar.</div>
+                                <%}
+                                    }%>
                         
                     </div>
                 </div>
