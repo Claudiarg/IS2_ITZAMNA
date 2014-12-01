@@ -113,7 +113,15 @@
                     <div id="main-content">	
 
                         <h2>Registrar nuevo equipo.</h2>                                                                   
-                          
+                                                  <%
+                        if(request.getParameter("action") != null){
+                                String action = request.getParameter("action");
+                                if(action.equals("true")){%>                                    
+                                    <div class="alert alert-success" role="alert"> Equipo ingresado al sistema de forma exitosa</div>
+                                <%}else{%>
+                                <div class="alert alert-danger" role="alert">Se generó un fallo al guardar el nuevo regístro. Vuelve a intentar.</div>
+                                <%}
+                                    }%>
                         <!--apartado para mostrar las características del equipo-->  
                         <form class="form-horizontal" role="form" action="GuardarEquipo.jsp" method="post">
                             <div id="equipo">

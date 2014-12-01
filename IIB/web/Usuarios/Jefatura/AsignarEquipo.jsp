@@ -105,17 +105,6 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
-                                                                        <ul>
-                                        <li>
-                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
-                                        </li>
-                                        <li>
-                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
-                                        </li>
-                                        <li>
-                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
@@ -129,8 +118,89 @@
 
                     <div id="main-content">	
 
-                        <h2>Bienvenido</h2>
+                        <h2>Asignar equipo a un usuario</h2>
+                        
+                        <%
+                 if(request.getParameter("action") != null){
+                         String action = request.getParameter("action");
+                         if(action.equals("true")){%>                                    
+                        <div class="alert alert-success" role="alert">Asignación realizada.</div>
+                        <%}else{%>
+                        <div class="alert alert-danger" role="alert">Se generó un fallo al registrar la asignación. Vuelve a intentar.</div>
+                        <%}
+                          }%>
+                        <%
+                         if(request.getParameter("error") != null){
+                                                 String action = request.getParameter("action");
+                                                 if(action.equals("ENull")){%>                                    
+                        <div class="alert alert-danger" role="alert"> Equipo asociado a la asignación no existe. Verifica el número de inventario del departamento de informática.</div>
+                        <%}
+                        }%> 
+                        
+                        <form class="form-horizontal" role="form" action="AsignarEquipoV.jsp" method="get">
+                            <label>Folio de movimiento</label>                               
+                            <input type="text" name="folio" required title="Folio de registro de movimiento"> <br>
+                            <label>Número de equipo</label>
+                            <input type="text" name="numEquipo" pattern ="[0-9]{6}" required title="Número de inventario del departamento de informática. 6 digitos"><br>                           
 
+                            <label>Clave activo fijo</label>
+                            <input type="text" name="claveAF" required title="Clave activo fijo"><br>                                                                                                            
+                            
+                            <label>Placa</label>                               
+                            <input type="text" name="placa" required title="Folio de registro de movimiento"> <br>
+                            
+                            <label>IP</label>                               
+                            <input type="text" name="ip" required title="IP de equipo asignado"> <br>
+                            
+                            <label>Puerto</label>                               
+                            <input type="text" name="puerto" required title="Puerto"> <br>
+                            
+                            <label>Nombre PC</label>                               
+                            <input type="text" name="nombrePC" required title="nombrePC"> <br>
+                            
+                            <label>Grupo de trabajo</label>                               
+                            <input type="text" name="grupoTrabajo" required title="Grupo de trabajo"> <br>
+                            
+                            <label>Sistema operativo</label>                               
+                            <input type="text" name="so" required title="Sistema operativo"> <br>
+                            
+                            <label>Service Pack</label>                               
+                            <input type="text" name="servicePack" required title="Service pack"> <br>
+
+                            <label>Servidor antivirus </label>                               
+                            <input type="text" name="servidorA" required title="Servidor antivirus"> <br>                            
+
+                            <label>Version antivirus</label>                               
+                            <input type="text" name="versionA" required title="Version antivirus"> <br>
+                            
+                            <label>Observer/Problemas</label>                               
+                            <input type="text" name="observerP" required title="Observer/Problemas"> <br>
+                            
+                            <label>Segmento</label>                               
+                            <input type="text" name="segmento" required title="Segmento"> <br>
+                            
+                            <label>Usuario</label>                               
+                            <input type="text" name="usuario" required title="Usuario asignado"> <br>                            
+                            
+                            <label>Responsable de levantamiento</label>                               
+                            <input type="text" name="responsableL" required title="Responsable de levantamiento"> <br>
+                            
+                            <label>Departamento o Área:</label>
+                            <input type="text" name="DepartamentoArea" required><br>
+
+                            <label>Institución</label><br>
+                            <input type="radio" name="institucion" value="IIB">IIB<br>
+                            <input type="radio" name="institucion" value="BN">BN<br>
+                            <input type="radio" name="institucion" value="HN">HN<br>
+                                                        
+                            
+                            <input type="hidden" name="tipoMov" value="AltaEquipo">
+                            <input type="hidden" name="tipoEquipo" value="EquipoCompleto">                       
+
+                            <button class="btn btn-default" type="submit">Guardar</button>                          
+                            
+                            
+                        </form>
                         
                     </div>
                 </div>

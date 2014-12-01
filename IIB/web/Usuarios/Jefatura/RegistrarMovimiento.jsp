@@ -38,8 +38,8 @@
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
                 <form method="post" action="../../cerrarSesion.jsp">               
-                       <button type="submit" id="cerrarS">Salir</button>                                 
-                   </form>                    
+                    <button type="submit" id="cerrarS">Salir</button>                                 
+                </form>                    
             </div>
         </div>
 
@@ -105,23 +105,12 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
-                                                                        <ul>
-                                        <li>
-                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
-                                        </li>
-                                        <li>
-                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
-                                        </li>
-                                        <li>
-                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
                             </ul>
-                            
+
                         </div>
                     </div>
 
@@ -129,9 +118,61 @@
 
                     <div id="main-content">	
 
-                        <h2>Bienvenido</h2>
-
+                        <h2>Registar movimiento de equipo</h2>
+                        <%
+                 if(request.getParameter("action") != null){
+                         String action = request.getParameter("action");
+                         if(action.equals("true")){%>                                    
+                        <div class="alert alert-success" role="alert"> Movimiento registrado de forma exitosa.</div>
+                        <%}else{%>
+                        <div class="alert alert-danger" role="alert">Se generó un fallo al registrar el movimiento. Vuelve a intentar.</div>
+                        <%}
+                          }%>
+                        <%
+                         if(request.getParameter("error") != null){
+                                                 String action = request.getParameter("action");
+                                                 if(action.equals("ENull")){%>                                    
+                        <div class="alert alert-danger" role="alert"> Equipo asociado al movimiento no existe. Verifica el número de inventario del departamento de informática.</div>
+                        <%}
+                        }%>                    
                         
+                        <form class="form-horizontal" role="form" action="RegistrarMovimientoV.jsp" method="get">
+                            <label>Folio</label>                               
+                            <input type="text" name="folio" required title="Folio de registro de movimiento"> <br>
+
+                            <label>Número de equipo.</label>
+                            <input type="text" name="numEquipo" pattern ="[0-9]{6}" required title="Número de inventario del departamento de informática. 6 digitos"><br>
+
+                            <label>Tipo de movimiento</label><br>    
+                            <input type="radio" name="tipoMov" value="Descompostura o falla">Descompostura o falla<br>
+                            <input type="radio" name="tipoMov" value="Baja">Baja<br>
+                            <input type="radio" name="tipoMov" value="Desuso">Desuso<br>
+                            <input type="radio" name="tipoMov" value="RenovacionCambio">Renovación/Cambio<br>
+
+                            <label>Nombre de usuario:</label>                                
+                            <input type="text" name="usuario"required><br>                         
+
+                            <label>Departamento o Área:</label>
+                            <input type="text" name="DepartamentoArea" required><br>
+
+                            <label>Institución</label><br>
+                            <input type="radio" name="institucion" value="IIB">IIB<br>
+                            <input type="radio" name="institucion" value="BN">BN<br>
+                            <input type="radio" name="institucion" value="HN">HN<br>
+
+                            <label>Tipo de equipo</label><br>
+                            <input type="radio" name="tipoEquipo" value="Impresora_Multifuncional">Impresora/Multifuncional<br>
+                            <input type="radio" name="tipoEquipo" value="Nobreak_Regulador">No break / regulador<br>
+                            <input type="radio" name="tipoEquipo" value="Escaner">Escaner<br>
+                            <input type="radio" name="tipoEquipo" value="Telefono">Teléfono<br>
+                            <input type="radio" name="tipoEquipo" value="CPU">CPU<br>
+                            <input type="radio" name="tipoEquipo" value="EquipoCompleto">Equipo Completo<br>
+                            <input type="radio" name="tipoEquipo" value="Monitor">Monitor<br>
+                            <input type="radio"  name="tipoEquipo" value="Otro">Otro <input type="text" name="OtroI"  title="Especificación de tipo de equipo"><br> 
+                            <button class="btn btn-default" type="submit">Guardar</button>
+                        </form>
+
+
                     </div>
                 </div>
 

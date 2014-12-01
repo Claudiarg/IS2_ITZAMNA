@@ -4,6 +4,7 @@
     Author     : clau
 --%>
 
+
 <%@page import="java.sql.SQLException"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.ResultSet"%>
@@ -11,12 +12,11 @@
 <%@page import="Controlador.Equipo" %>
 <%@page import="Conexion.ConexionBD" %>
 <%
-    try {
         Equipo e;
         String invInf = request.getParameter("invInf").trim();
-        String create = request.getParameter("create");
-
-        if (create.equals("true")) {
+        String nuevo = request.getParameter("create");
+    try {
+        if (nuevo.equals("true")) {
             e = new Equipo();
             e.setNumInformatica(Integer.parseInt(invInf));
         } else {
@@ -93,15 +93,18 @@
             System.out.println("Valor invUNAM es:" + request.getParameter("uso"));
             System.out.println("Ingresé valor de uso");
         }
-        if(create.equals("true")){        
-        response.sendRedirect("InicioJefatura.jsp?action=true"); 
+        if(nuevo.equals("true")){        
+        response.sendRedirect("RegistrarEquipos.jsp?action=true"); 
         }
         else{
          response.sendRedirect("ActualizarEquipos.jsp?action=true");
         }
     } catch (SQLException s) {
-        response.sendRedirect("ActualizarEquipos.jsp?action=false");
-
+        if(nuevo.equals("true")){
+            response.sendRedirect("RegistrarEquipos.jsp?action=false");
+        }else{
+            response.sendRedirect("ActualizarEquipos.jsp?action=false");
+        }      
     }
 
 %>
