@@ -1,163 +1,83 @@
-.navbar-brand, h1, h2, h3, .sidebar .nav li.active > a {
-	font-weight: bolder;
+//Menu *******************************************+++
+
+
+#menu1 {  
+    text-align: center;
+    width: 320px;
+  
 }
 
-h1 {
-	text-transform: uppercase;
-}
-.main {
-	overflow-y: auto !important;
-	background: #FFF;
-	/*background: url('../img/background.jpg') no-repeat center center fixed;*/
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+#menu1 ul { 
+    list-style-type: none;
 }
 
-.main-row {
-	overflow: hidden;
+#menu1 ul li.nivel1 { 
+    width: 215px;
+    margin-left: -20px;
 }
 
-.logo  img {
-	max-height: 12.5em;
-	border-radius: 20%;
-}
-.logo {
-	border-radius: 50%;
-	margin-top: 2em;
+#menu1 ul li.primera { 
+    border-top: solid 1px #FFF;
 }
 
-.carousel, .item img {
-	max-height: 30em;
+#menu1 ul li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #706e43;
+    border: solid 1px #fff;
+    border-top: none;
+    padding: 12px;
+    position: relative;
+    font-size: 16px;
+    text-align: center;
+    text-shadow: 0 0 10px #808FA1;
 }
 
-.sidebar, .main-header, .my-navbar {
-	background: #044c87 ; /*#FF3DC2;*/
-color: #FFF;
+#menu1 ul li:hover {
+    position: relative;
+    background-color: #333C4D;
+    color: #fff;
 }
-.carousel-inner{
-background: #044c87;
-}
-.navbar-toggle .icon-bar {
-	background: #FFF;
-}
-.my-navbar {
-	border-color: #FCC;
-}
-.my-link, .my-link:hover {
-	text-decoration: none;
+#menu1 ul li a:hover, #menu1 ul li:hover a.nivel1 {
+    background-color: #333C4D;
+    color: #fff;
+    position: relative;
 }
 
-.my-link, .sidebar .nav li a:link, .sidebar .nav li a:visited, .navbar-collapse ul.nav li a:link, .navbar-collapse ul.nav li a:visited  {
-	font-size: 1em;
-	color: #333;
-}
-.my-link:hover {
-	color: #FFF;
-}
-.main-header {
-	width: 100%;
-	padding: .5em;
-	margin: 0;
-}
-.item img {
-	width: 100%;
-}
-.panel {
-	background: transparent;
-}
-.panel-heading, .sidebar .nav li.active > a, .navbar-collapse ul.nav li.active > a {
-	/*background: #FCC !important;*/
-background: #717341 !important;
-}
-.panel-title {
-	padding: 1em;
-}
-.panel-body, .list-group-item, .media {
-	/*background: rgba(255, 204, 204, 0.72) !important;*/
-background: #717341 !important;
-opacity: .6;
-}
-.title-question {
-	padding: .5em;
+#menu1 ul li a.nivel1 {
+    display: block!important;
+    display: none;
+    position: relative;
 }
 
-.no-active {
-	display: none;
-	visibility: hidden;
-	opacity: 0;
-	-webkit-transition: opacity 2s ease-in-out;
-	-moz-transition: opacity 2s ease-in-out;
-	-ms-transition: opacity 2s ease-in-out;
-	-o-transition: opacity 2s ease-in-out;
-	transition: opacity 2s ease-in-out;
-	
-}
-.my-active {
-	display: block;
-	visibility: visible;
-	opacity: 1;
-	
-	
-	-webkit-transition: opacity 2s ease-in-out;
-	-moz-transition: opacity 2s ease-in-out;
-	-ms-transition: opacity 2s ease-in-out;
-	-o-transition: opacity 2s ease-in-out;
-	transition: opacity 2s ease-in-out;
-}
-.media-object{
-	opacity:.5;
-}
-.media-object:hover{
-	opacity: 1;
-	-webkit-transition: opacity 2s ease-in-out;
-	-moz-transition: opacity 2s ease-in-out;
-	-ms-transition: opacity 2s ease-in-out;
-	-o-transition: opacity 2s ease-in-out;
-	transition: opacity 2s ease-in-out;
+#menu1 ul li ul {
+    display: none;
 }
 
-.media-video{
-	/*width: 60%;
-	height: 25em;*/
-	
-	
-}
-#chat-msg{
-	
-}
-#chat-list .list-group-item{
-opacity: .7;	
+#menu1 ul li a:hover ul, #menu1 ul li:hover ul {
+    display: block;
+    position: absolute;
+    left: 175px;
+    top:-1px!important;
+    top: -31px;
 }
 
-#chat-list .list-group-item:hover{
-opacity: 1;	
+#menu1 ul li ul li a {
+    width: 160px;
+    background-color: #706e43;
+    color: #fff;
 }
 
-#chat-msg,#chat-list {
-	overflow-y:auto;
-	display:inline-block;
-	height: 20em;
-
-}
-@media (min-width: 650px) and (max-width: 860px) {
-
-	.navbar-form input {
-		max-width: 10em;
-	}
-	.main-header {
-		margin-top: 2em;
-	}
-}
-@media (max-width: 992px) {
-
-	.main-header {
-		margin-top: 2em;
-	}
-	.navbar-brand, .navbar-form {
-		font-size: .8em;
-	}
-
+#menu1 ul li ul li a:hover {
+    position: relative;
+    background-color: #333C4D;
+    color: #FFF;
 }
 
+table.falsa {
+    border-collapse:collapse;
+    border:0px;
+    float: left;
+    position: relative;
+}

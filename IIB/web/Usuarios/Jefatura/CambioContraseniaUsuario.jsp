@@ -38,8 +38,8 @@
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
                 <form method="post" action="../../cerrarSesion.jsp">               
-                       <button type="submit" id="cerrarS">Salir</button>                                 
-                   </form>                    
+                    <button type="submit" id="cerrarS">Salir</button>                                 
+                </form>                    
             </div>
         </div>
 
@@ -48,7 +48,7 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Jefatura de departamento.</small> </h1>
+                    
                 </div>
 
                 <div id="content" > 
@@ -69,6 +69,14 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Movimientos</a>
+                                    <ul>
+                                        <li>
+                                            <a href="RegistrarMovimiento.jsp">Registrar movimiento</a>
+                                        </li>
+                                        <li>
+                                            <a href="AsignarEquipo.jsp">Asignar equipo (Alta)</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Usuarios</a>
@@ -97,6 +105,17 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
+                                                                        <ul>
+                                        <li>
+                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
@@ -113,36 +132,35 @@
                         <h2>Actualizar contraseña de usuario.</h2>
                         <div style="margin-left:80px"> 
 
-                            <form class="form-horizontal" action="CambioContraseniaUsValidador.jsp" method="post" role="form">
+                            <form class="form-horizontal" action="./validacion/CambioContraseniaUsValidador.jsp" method="post" role="form">
                                 <div class="form-group"style="margin-right:-850px">                                                                                                                                                                                   
                                     <br><br>
                                     <%
+                                        if (request.getParameter("accion") != null) {
+                                            String accion = request.getParameter("accion");
+                                            if (accion.equals("validate")) {%>
+                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>       
+                                    <%    }
+                                        }
                                         if (request.getParameter("error") != null) {
                                             String error = request.getParameter("error");
-                                            if (error.equals("Invalida")) {
+                                            if (error.equals("NE")) {
                                     %>
-                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Contraseña Actual Invalida.</p></div>                                             
+                                    <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Usuario no existe. Verificar correo.</p></div>                                             
                                     <%
-                                    } else {
+                                        }
+                                        if (error.equals("NV")) {
                                     %>
                                     <div style="width: 700px" class="alert alert-danger" role="alert"><p style="text-align:center">Nueva contraseña no coincide en ambos campos.</p></div>
                                     <%
-                                        }
-
-                                    } else {
-                                        if (request.getParameter("exito") != null) {
-                                    %>
-                                    <div style="width: 700px" class="alert alert-success" role="alert"><p style="text-align:center"><b>Cambio de Contraseña Exitoso.</b></p></div>
-                                    <%
-                                            }
+                                        }    
                                         }
 
                                     %>
-                                    <label class="col-sm-2 control-label">Contraseña Actual:</label>
+                                    <label class="col-sm-2 control-label">Correo de usuario:</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="password" name="conActual" style="width: 300px" required>
+                                        <input class="form-control" type="email" name="correo" style="width: 300px" required>
                                     </div>
-
                                     <label class="col-sm-2 control-label">Nueva Contraseña:</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="password" name="nueva"  style="width: 300px" required>

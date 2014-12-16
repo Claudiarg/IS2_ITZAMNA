@@ -102,3 +102,20 @@ body {
 
 100% { opacity: 1.0; transform: translate(0, 0);}
 }
+
+#cerrarS{
+    background-color: black;    
+}
+/*
+#izquierda p {
+    float: left;
+    width: 10%;    
+    display: inline-block;
+}
+
+#derecha{
+    float: left;
+    width: 40%;
+    display: inline-block;
+}
+*/

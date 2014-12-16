@@ -29,6 +29,27 @@ public class Usuario {
         this.count = 0;        
     }
 
+        public Usuario(int nombreParam, String parametro) throws ClassNotFoundException, SQLException {
+        String dato = (nombreParam == 0)? "idUsuario": "correo";
+        this.count = 0;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        query = "Select * from Usuario where "+dato+" = '" + parametro + "';";
+        ResultSet result = conexion.consultarBD(query);
+
+        while (result.next()) {
+            idUsuario = result.getInt(1);
+            tipoUsuario = result.getInt(2);
+            nombre = result.getString(3);
+            apellido = result.getString(4);
+            correo = result.getString(5);
+            contrasenia = result.getString(6);
+            activo = result.getInt(7);
+            count=1;
+        }
+        conexion.desconectarBD();
+    }
+        
     public Usuario(String correo, String contrasenia) throws ClassNotFoundException, SQLException {
         this.count = 0;
         ConexionBD conexion = new ConexionBD();

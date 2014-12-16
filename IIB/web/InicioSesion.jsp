@@ -47,7 +47,7 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Inicio de Sesi&oacute;n</small> </h1>
+                    <h1 style="font-size: 28px">Inicio de Sesi&oacute;n </h1>
                 </div>
 
                 <div id="content"> 
@@ -68,17 +68,17 @@
                         
                             }
                         %>
-                        <form class="form-horizontal" role="form" action="validadorSesion.jsp" method="post">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Correo</label>
+                        <form style="margin-left: 192px" class="form-horizontal" role="form" action="validadorSesion.jsp" method="post">
+                            <div   class="form-group">
+                                <label style="margin-left: -28px;" for="inputEmail3" class="col-sm-2 control-label">Correo</label>
                                 <div class="col-sm-10">
-                                    <input pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" type="email" name="correo" class="form-control" id="inputEmail3" required>
+                                    <input style="width: 380px" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" type="email" name="correo" class="form-control" id="inputEmail3" required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
+                            <div  class="form-group">
+                                <label style="margin-left: -27px;" class="col-sm-2 control-label">Contraseña</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="contrasenia" class="form-control" id="inputPassword3" required>
+                                    <input style="width: 380px" type="password" name="contrasenia" class="form-control" id="inputPassword3" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-default">Entrar</button>
+                                    <button  style="margin-left: 286px;" type="submit" class="btn btn-default">Entrar</button>
                                 </div>
                             </div>
                         </form>

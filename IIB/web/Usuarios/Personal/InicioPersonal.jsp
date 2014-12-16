@@ -64,6 +64,17 @@
                             <ul>                                                                                     
                                 <li class="nivel1 primera">
                                     <a href="Consultas.jsp" class="nivel1">Consultas</a>
+                                    <ul>
+                                        <li>
+                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambiarContrasenia.jsp">Cambiar Contraseña</a>

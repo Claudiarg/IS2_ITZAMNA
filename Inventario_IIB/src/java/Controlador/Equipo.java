@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Controlador;
+
+import Conexion.ConexionBD;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author beth
  */
 public class Equipo {
-    
+
     private int idEquipo;
     private int numInformatica;
     private int numUNAM;
@@ -30,206 +33,425 @@ public class Equipo {
     private int estadoFisico;
     private int ubicacion;
     private int responsable;
-    private String fechaResguardo ;
+    private String fechaResguardo;
     private int centroCosto;
     private int estado;
+    private int count = 0;
+    private boolean creado = false;
 
-    public Equipo() {
+    public Equipo() throws ClassNotFoundException, SQLException{
+    //INSERT INTO `Inventario_IIB`.`Usuario` (`tipoUsuario`, `nombre`, `apellido`, `correo`, `contrasenia`) VALUES ('3', 'Cesar ', 'Ortiz Alarcon', 'cesar@gmail.com', '1234');
+        ConexionBD c = new ConexionBD();
+        c.conectarBD();
+        int equipo = 23456;
+        String query = "insert into Equipo (idEquipo) values (0)";        
+        boolean a = c.insertarBD(query);                
+            query = "select max(idEquipo) AS idEqui FROM Equipo";
+            ResultSet r = c.consultarBD(query);
+            while(r.next()){
+               equipo = r.getInt(1);                
+                this.creado = true;
+                System.out.println("Si ingrese a while para asignar el id");
+            }
+            this.idEquipo = equipo;        
+        c.desconectarBD();
     }
 
-    public Equipo(int idEquipo, int numInformatica, int numUNAM, int numDepto, String descripcion, int marca, int modelo, String serie, int familia, int tipo, int proveedor, String fechaRegistro, int clase, int uso, int nivel, int estadoFisico, int ubicacion, int responsable, String fechaResguardo, int centroCosto, int estado) {
-        this.idEquipo = idEquipo;
-        this.numInformatica = numInformatica;
-        this.numUNAM = numUNAM;
-        this.numDepto = numDepto;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.serie = serie;
-        this.familia = familia;
-        this.tipo = tipo;
-        this.proveedor = proveedor;
-        this.fechaRegistro = fechaRegistro;
-        this.clase = clase;
-        this.uso = uso;
-        this.nivel = nivel;
-        this.estadoFisico = estadoFisico;
-        this.ubicacion = ubicacion;
-        this.responsable = responsable;
-        this.fechaResguardo = fechaResguardo;
-        this.centroCosto = centroCosto;
-        this.estado = estado;
+    public Equipo(int numInv) throws ClassNotFoundException, SQLException {
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        String query = "select * from Equipo where numInformatica =" + numInv + ";";        
+        ResultSet r = conexion.consultarBD(query);        
+        while (r.next()) {
+            this.idEquipo = r.getInt(1);
+            this.numInformatica = r.getInt(2);
+            this.numUNAM = r.getInt(3);
+            this.numDepto = r.getInt(4);
+            this.descripcion = r.getString(5);
+            this.marca = r.getInt(6);
+            this.modelo = r.getInt(7);
+            this.serie = r.getString(8);
+            this.familia = r.getInt(9);
+            this.tipo = r.getInt(10);
+            this.proveedor = r.getInt(11);
+            this.fechaRegistro = r.getString(12);
+            this.clase = r.getInt(13);
+            this.uso = r.getInt(14);
+            this.nivel = r.getInt(15);
+            this.estadoFisico = r.getInt(16);
+            this.ubicacion = r.getInt(17);
+            this.responsable = r.getInt(18);
+            this.fechaResguardo = r.getString(19);
+            this.centroCosto = r.getInt(20);
+            this.estado = r.getInt(21);
+            this.setCount(this.count+1);
+        }
+        conexion.desconectarBD();
+
+    }
+
+    public boolean InsertarEquipo(int numInformatica, int numUNAM, int numInv, String descripcion, int marca, int modelo, int serie, int familia, int tipo,int proveedor, String fechaRegistro, int clase, int uso, int nivelObsolescencia, int estadoFisico, int ubicacion, int responsable, String fechaResguardo, int centroDeCosto, int estado) throws ClassNotFoundException, SQLException {
+        boolean insert;                
+        String query = "Insert into Equipo(idEquipo, numInformatica, numUNAM, numInv, descripcion, marca, modelo, serie, familia, tipo, proveedor, fechaRegistro, clase, uso, nivelObsolescencia, estadoFisico, ubicacion, responsable, fechaResguardo, centroDeCosto, estado) values (0, "+numInformatica+","+ numUNAM+", "+numInv+", '"+descripcion+"',"+ marca+", "+modelo+", "+serie+","+familia+", "+tipo+", "+proveedor+", '"+fechaRegistro+"', "+clase+", "+uso+", "+nivelObsolescencia+", "+estadoFisico+", "+ubicacion+", "+responsable+",'"+fechaResguardo+"', "+centroDeCosto+","+estado+");";
+        ConexionBD conexion = new ConexionBD();        
+        conexion.conectarBD();
+        insert = conexion.insertarBD(query);       
+             query = "select idEquipo from Equipo where numInformatica =" + numInv + ";";
+            conexion.consultarBD(query);
+            ResultSet r = conexion.consultarBD(query);
+            while(r.next()){
+                this.idEquipo = r.getInt(1);
+                this.setCount(this.count+1);
+            }        
+        return insert;
+
+    }
+
+    public int EstadoEquipo(int Estado) throws ClassNotFoundException, SQLException {
+        int update;
+        String query = "Update Equipo set estado = " + Estado+" where idEquipo="+this.getIdEquipo();
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
+
     }
 
     public int getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
+    /*public int setIdEquipo(int idEquipo) throws ClassNotFoundException, SQLException {
+    this.idEquipo = idEquipo;
+    int update;
+    String query = "Update Equipo set  idEquipo " + idEquipo + "   where idEquipo= " + this.idEquipo;
+    ConexionBD conexion = new ConexionBD();
+    conexion.conectarBD();
+    update = conexion.actualizarBD(query);
+    return update;
+    }*/
+    public boolean isCreado() {
+        return creado;
     }
+
+    public void setCreado(boolean creado) {
+        this.creado = creado;
+    }
+    
+    
 
     public int getNumInformatica() {
         return numInformatica;
     }
 
-    public void setNumInformatica(int numInformatica) {
-        this.numInformatica = numInformatica;
+    public int setNumInformatica(int numInformatica) throws ClassNotFoundException, SQLException {
+        this.numInformatica = numInformatica;              
+        int update;
+        String query = "Update Equipo set  numInformatica= " + numInformatica + " where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getNumUNAM() {
         return numUNAM;
     }
 
-    public void setNumUNAM(int numUNAM) {
-        this.numUNAM = numUNAM;
+    public int setNumUNAM(int numUNAM) throws ClassNotFoundException, SQLException {
+        this.numUNAM = numUNAM;                
+        int update;
+        String query = "Update Equipo set  numUNAM= " + numUNAM + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getNumDepto() {
         return numDepto;
     }
 
-    public void setNumDepto(int numDepto) {
-        this.numDepto = numDepto;
+    public int setNumDepto(int numDepto) throws ClassNotFoundException, SQLException {
+        this.numDepto = numDepto;                
+        int update;
+        String query = "Update Equipo set  numInv= " + numDepto + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public int setDescripcion(String descripcion) throws ClassNotFoundException, SQLException {
+        this.descripcion = descripcion;                
+        int update;
+        String query = "Update Equipo set  descripcion= '" + descripcion + "'  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getMarca() {
         return marca;
     }
 
-    public void setMarca(int marca) {
-        this.marca = marca;
+    public int setMarca(int marca) throws ClassNotFoundException, SQLException {
+        this.marca = marca;               
+        int update;
+        String query = "Update Equipo set  numUNAM= " + numUNAM + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getModelo() {
         return modelo;
     }
 
-    public void setModelo(int modelo) {
-        this.modelo = modelo;
+    public int setModelo(int modelo) throws ClassNotFoundException, SQLException {
+        this.modelo = modelo;                
+        int update;
+        String query = "Update Equipo set  modelo= " + modelo + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public String getSerie() {
         return serie;
     }
 
-    public void setSerie(String serie) {
-        this.serie = serie;
+    public int setSerie(String serie) throws ClassNotFoundException, SQLException {
+        this.serie = serie;                
+        int update;
+        String query = "Update Equipo set  serie= '" + serie + "'  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getFamilia() {
         return familia;
     }
 
-    public void setFamilia(int familia) {
+    public int setFamilia(int familia) throws ClassNotFoundException, SQLException {
         this.familia = familia;
+        int update;
+        String query = "Update Equipo set  familia= " + familia + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public int setTipo(int tipo) throws ClassNotFoundException, SQLException {
         this.tipo = tipo;
+        int update;
+        String query = "Update Equipo set  tipo= " + tipo + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getProveedor() {
         return proveedor;
     }
 
-    public void setProveedor(int proveedor) {
+    public int setProveedor(int proveedor) throws ClassNotFoundException, SQLException {
         this.proveedor = proveedor;
+        int update;
+        String query = "Update Equipo set  proveedor= " + proveedor + "  where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public String getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(String fechaRegistro) {
+    public int setFechaRegistro(String fechaRegistro) throws ClassNotFoundException, SQLException {
         this.fechaRegistro = fechaRegistro;
+        int update;
+        String query = "Update Equipo set  fechaRegistro= '" + fechaRegistro + "'   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getClase() {
-        return clase;
+        return clase;        
     }
 
-    public void setClase(int clase) {
+    public int setClase(int clase) throws ClassNotFoundException, SQLException {
         this.clase = clase;
+        int update;
+        String query = "Update Equipo set  clase= " + clase + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getUso() {
         return uso;
     }
 
-    public void setUso(int uso) {
+    public int setUso(int uso) throws ClassNotFoundException, SQLException {
         this.uso = uso;
+        int update;
+        String query = "Update Equipo set  uso= " + uso + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
+        
     }
 
     public int getNivel() {
         return nivel;
     }
 
-    public void setNivel(int nivel) {
+    public int setNivel(int nivel) throws ClassNotFoundException, SQLException {
         this.nivel = nivel;
+        int update;
+        String query = "Update Equipo set  nivelObsolescencia= " + nivel + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getEstadoFisico() {
         return estadoFisico;
     }
 
-    public void setEstadoFisico(int estadoFisico) {
+    public int setEstadoFisico(int estadoFisico) throws ClassNotFoundException, SQLException {
         this.estadoFisico = estadoFisico;
+        int update;
+        String query = "Update Equipo set  estadoFisico= " + estadoFisico + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(int ubicacion) {
+    public int setUbicacion(int ubicacion) throws ClassNotFoundException, SQLException {
         this.ubicacion = ubicacion;
+        int update;
+        String query = "Update Equipo set  ubicacion= " + ubicacion + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;        
     }
 
     public int getResponsable() {
         return responsable;
     }
 
-    public void setResponsable(int responsable) {
+    public int setResponsable(int responsable) throws ClassNotFoundException, SQLException {
         this.responsable = responsable;
+        int update;
+        String query = "Update Equipo set  responsable= " + responsable + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;        
     }
 
     public String getFechaResguardo() {
         return fechaResguardo;
     }
 
-    public void setFechaResguardo(String fechaResguardo) {
-        this.fechaResguardo = fechaResguardo;
+    public int setFechaResguardo(String fechaResguardo) throws ClassNotFoundException, SQLException {
+        this.fechaResguardo = fechaResguardo;                
+        int update;
+        String query = "Update Equipo set  fechaResguardo= '" + fechaResguardo + "'   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getCentroCosto() {
         return centroCosto;
     }
 
-    public void setCentroCosto(int centroCosto) {
+    public int setCentroCosto(int centroCosto) throws ClassNotFoundException, SQLException {
         this.centroCosto = centroCosto;
+        int update;
+        String query = "Update Equipo set  centroCosto= " + centroCosto + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;
     }
 
     public int getEstado() {
         return estado;
     }
 
-    public void setEstado(int estado) {
+    public int setEstado(int estado) throws ClassNotFoundException, SQLException {
         this.estado = estado;
+        int update;
+        String query = "Update Equipo set  estado= " + estado + "   where idEquipo= " + this.idEquipo;
+        ConexionBD conexion = new ConexionBD();
+        conexion.conectarBD();
+        update = conexion.actualizarBD(query);
+        return update;        
     }
-    
-    
-    
-    
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    /*public static void main(String Args[]) throws ClassNotFoundException, SQLException {
+/*        int inv = 1;
+        //String nInv = Integer.toString(inv);
+        Equipo e = new Equipo(inv);
+        System.out.println("Se ingreso count para crear equipo: "+e.getCount());
+        System.out.println("Fecha de resguardo de e: "+e.getFechaRegistro());
+        System.out.println("Asignamos la fecha con set");
+        int act= e.setFechaRegistro("2014-11-11");
+        System.out.println("La fecha de registro ahora es: "+e.getFechaRegistro());
+        System.out.println("num lineas actualizadas son: "+act);
+        Equipo e1 = new Equipo(inv);
+        System.out.println("Ahora la fecha de registro es: "+e1.getFechaRegistro());
+        Equipo e = new Equipo();
+        int cat = 3;
+        int c2 = 2345;
+        String x = "x";
+        String fecha = "2015-12-12";         
+        boolean inserto = e.InsertarEquipo(cat, cat, c2, x, cat, cat, cat, cat, cat, cat, fecha, cat, cat, cat, cat, cat, cat,fecha , cat,cat);        
+            System.out.println("Si insertó y el id es: "+e.getIdEquipo());
+    }
+        Equipo e = new Equipo();
+        System.out.println("El equipo fue creado? "+e.isCreado());
+        System.out.println("El id del nuevo equipo es: "+ e.getIdEquipo());
+        
+    }*/
 }

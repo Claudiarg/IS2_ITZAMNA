@@ -53,11 +53,11 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Jefatura de departamento.</small> </h1>
+                    
                 </div>
 
                 <div id="content" > 
-                    <div id="vertical-menu">
+                                        <div id="vertical-menu">
 
                         <div id="menu1">
                             <ul>
@@ -74,6 +74,14 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Movimientos</a>
+                                    <ul>
+                                        <li>
+                                            <a href="RegistrarMovimiento.jsp">Registrar movimiento</a>
+                                        </li>
+                                        <li>
+                                            <a href="AsignarEquipo.jsp">Asignar equipo (Alta)</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Usuarios</a>
@@ -102,12 +110,23 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
+                                                                        <ul>
+                                        <li>
+                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
                             </ul>
-
+                            
                         </div>
                     </div>
 
@@ -118,10 +137,10 @@
                             int nI = Integer.parseInt(request.getParameter("numI"));
                             Equipo e = new Equipo(nI);
                             if (e.getCount() == 0) {//si es distinto a 0 entonces al menos existe 1
-                                response.sendRedirect("ActualizarEquipos.jsp?error=NE");
+                                response.sendRedirect("../ActualizarEquipos.jsp?error=NE");
                             } else {%>
                         <!--apartado para mostrar las características del equipo-->  
-                        <form class="form-horizontal" role="form" action="GuardarEquipo.jsp" method="post">
+                        <form class="form-horizontal" role="form" action="./validacion/GuardarEquipo.jsp" method="post">
                             <%
                                 ConexionBD c = new ConexionBD();
                                 c.conectarBD();
@@ -158,7 +177,7 @@
 
 
                                     <label>Clase:</label>
-                                    <select name="clase"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="clase"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Clase;");
                                             while (r.next()) {
@@ -179,7 +198,7 @@
                                     </select><br>                                     
 
                                     <label>Estado Físico:</label>
-                                    <select name="estadoF"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="estadoF"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM EstadoFisico;");
                                             while (r.next()) {
@@ -200,7 +219,7 @@
                                     </select><br> 
 
                                     <label>Familia:</label>
-                                    <select name="familia"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="familia"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Familia;");
                                             while (r.next()) {
@@ -221,7 +240,7 @@
                                     </select><br>
 
                                     <label>Marca:</label>
-                                    <select name="marca"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="marca"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Marca;");
                                             while (r.next()) {
@@ -243,7 +262,7 @@
                                     </select><br> 
 
                                     <label>Modelo:</label>
-                                    <select name="modelo"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="modelo"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Modelo;");
                                             while (r.next()) {
@@ -264,7 +283,7 @@
                                     </select><br> 
 
                                     <label>Proveedor:</label>
-                                    <select name="prov"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="prov"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Proveedor;");
                                             while (r.next()) {
@@ -285,7 +304,7 @@
                                     </select><br>
 
                                     <label>Responsable:</label>
-                                    <select name="responsable"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px"  name="responsable"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Responsable;");
                                             while (r.next()) {
@@ -306,7 +325,7 @@
                                     </select><br> 
 
                                     <label>Tipo:</label>
-                                    <select name="tipo"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="tipo"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Tipo;");
                                             while (r.next()) {
@@ -328,7 +347,7 @@
                                     </select><br>    
                                     
                                     <label>Ubicación:</label>
-                                    <select name="ubicacion"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="ubicacion"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Ubicacion;");
                                             while (r.next()) {
@@ -348,7 +367,7 @@
                                         %>
                                     </select><br>
                                     <label>Uso:</label>
-                                    <select name="uso"><br>                                  
+                                    <select class="form-control input-sm" style="width: 200px" name="uso"><br>                                  
                                         <%
                                             r = c.consultarBD("SELECT * FROM Uso;");
                                             while (r.next()) {

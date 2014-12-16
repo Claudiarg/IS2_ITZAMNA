@@ -48,11 +48,11 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Jefatura de departamento.</small> </h1>
+                   
                 </div>
 
                 <div id="content" > 
-                    <div id="vertical-menu">
+                                        <div id="vertical-menu">
 
                         <div id="menu1">
                             <ul>
@@ -105,12 +105,23 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
+                                                                        <ul>
+                                        <li>
+                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
                             </ul>
-
+                            
                         </div>
                     </div>
 
@@ -118,7 +129,7 @@
 
                     <div id="main-content">	
 
-                        <h2>Registar movimiento de equipo</h2>
+                        <h2 id="bienvenido">Registar movimiento de equipo</h2>
                         <%
                  if(request.getParameter("action") != null){
                          String action = request.getParameter("action");
@@ -136,29 +147,29 @@
                         <%}
                         }%>                    
                         
-                        <form class="form-horizontal" role="form" action="RegistrarMovimientoV.jsp" method="get">
+                        <form class ="formulario" class="form-horizontal" role="form" action="./validacion/RegistrarMovimientoV.jsp" method="get">
                             <label>Folio</label>                               
                             <input type="text" name="folio" required title="Folio de registro de movimiento"> <br>
 
                             <label>Número de equipo.</label>
-                            <input type="text" name="numEquipo" pattern ="[0-9]{6}" required title="Número de inventario del departamento de informática. 6 digitos"><br>
+                            <input type="text" name="numEquipo" pattern ="[0-9]{6}" required title="Número de inventario del departamento de informática. 6 digitos"><br><br>
 
                             <label>Tipo de movimiento</label><br>    
                             <input type="radio" name="tipoMov" value="Descompostura o falla">Descompostura o falla<br>
                             <input type="radio" name="tipoMov" value="Baja">Baja<br>
                             <input type="radio" name="tipoMov" value="Desuso">Desuso<br>
-                            <input type="radio" name="tipoMov" value="RenovacionCambio">Renovación/Cambio<br>
+                            <input type="radio" name="tipoMov" value="RenovacionCambio">Renovación/Cambio<br><br>
 
                             <label>Nombre de usuario:</label>                                
-                            <input type="text" name="usuario"required><br>                         
+                            <input type="text" name="usuario"required><br><br>                         
 
                             <label>Departamento o Área:</label>
-                            <input type="text" name="DepartamentoArea" required><br>
+                            <input type="text" name="DepartamentoArea" required><br><br>
 
                             <label>Institución</label><br>
                             <input type="radio" name="institucion" value="IIB">IIB<br>
                             <input type="radio" name="institucion" value="BN">BN<br>
-                            <input type="radio" name="institucion" value="HN">HN<br>
+                            <input type="radio" name="institucion" value="HN">HN<br><br>
 
                             <label>Tipo de equipo</label><br>
                             <input type="radio" name="tipoEquipo" value="Impresora_Multifuncional">Impresora/Multifuncional<br>
@@ -168,7 +179,7 @@
                             <input type="radio" name="tipoEquipo" value="CPU">CPU<br>
                             <input type="radio" name="tipoEquipo" value="EquipoCompleto">Equipo Completo<br>
                             <input type="radio" name="tipoEquipo" value="Monitor">Monitor<br>
-                            <input type="radio"  name="tipoEquipo" value="Otro">Otro <input type="text" name="OtroI"  title="Especificación de tipo de equipo"><br> 
+                            <input type="radio"  name="tipoEquipo" value="Otro">Otro <input type="text" name="OtroI"  title="Especificación de tipo de equipo"><br><br> 
                             <button class="btn btn-default" type="submit">Guardar</button>
                         </form>
 

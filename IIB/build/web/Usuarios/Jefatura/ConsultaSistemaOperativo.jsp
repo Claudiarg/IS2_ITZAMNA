@@ -111,7 +111,8 @@
 
                                 <%
                                     }
-                                %>                               
+                                %>   
+                                <div><a href="SO">Descargar excel</a></div>
                             </table><br><br>
                             
                         </div>                            

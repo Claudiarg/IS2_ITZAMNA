@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package Conexion;
 
 import java.sql.Connection;
@@ -20,8 +21,8 @@ public class ConexionBD {
 
     private String url;
     private String controlador;
-    private String usuario = "admin";
-    private String contrasenia = "admin";
+    private String usuario = "root";
+    private String contrasenia = "306242351";
     private Connection conexion;
     private Statement stmt;
     private int count=0;
@@ -76,11 +77,16 @@ public class ConexionBD {
      * sentencia debe ser de la forma "INSERT INTO tabla VALUES (valores...)"
      *
      * @param sentencia La sentencia de sql para agregar a la BD.
+     * @return result. Boolean que indica si se realizó correctamente la inserción.
+     * 
      * @throws SQLException Si la conexion no esta activa.
      */
-    public void insertarBD(String sentencia) throws SQLException {
-        stmt.execute(sentencia);
+    public boolean insertarBD(String sentencia) throws SQLException {       
+        boolean result= stmt.execute(sentencia);
+        if(result){
         System.out.println("Se ejecuto la insercion correctamente.");
+        }
+        return result;
     }
 
     /**
@@ -101,11 +107,15 @@ public class ConexionBD {
      * debe ser de la forma "UPDATE tabla SET columna = valores"
      *
      * @param sentencia la sentencia de sql para actualizar la base.
+     * @return fila. El número de filas actualizadas en la base.
      * @throws SQLException Si la conexion no esta activa.
      */
-    public void actualizarBD(String sentencia) throws SQLException {
-        stmt.executeUpdate(sentencia);
+    public int actualizarBD(String sentencia) throws SQLException {
+        int fila = stmt.executeUpdate(sentencia);
+        if(fila > 0){
         System.out.println("Base Actualizada!");
+        }   
+        return fila;
     }
 
     /**

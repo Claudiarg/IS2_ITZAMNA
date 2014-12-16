@@ -23,13 +23,13 @@
             //System.out.println("Si existe el usuario");
             if(usuario.getActivo() == 1){// si esta el usuario activo en el sistema                 
                 //System.out.println("Usuario activo");
-                 HttpSession sesion = request.getSession();
-    		 sesion.setAttribute("idUs", usuario.getIdUsuario());
-                 sesion.setAttribute("Nombre", usuario.getNombre());
-                 sesion.setAttribute("Apellido", usuario.getApellido());
-		 sesion.setAttribute("tipoU",usuario.getTipoUsuario());
-                 sesion.setAttribute("contrasenia", usuario.getContrasenia());
-                 sesion.setAttribute("isLogin","true");
+                 session = request.getSession();
+    		 session.setAttribute("idUs", usuario.getIdUsuario());
+                 session.setAttribute("Nombre", usuario.getNombre());
+                 session.setAttribute("Apellido", usuario.getApellido());
+		 session.setAttribute("tipoU",usuario.getTipoUsuario());
+                 session.setAttribute("contrasenia", usuario.getContrasenia());
+                 session.setAttribute("isLogin","true");
                     /*1 | Jefatura de departamento    |
                       2 | Secretaria                  |
                       3 | Tecnico Académico           |
@@ -37,16 +37,16 @@
 
                  switch (usuario.getTipoUsuario()){
                      case 1:
-                         response.sendRedirect("VistaJefatura.jsp");
+                         response.sendRedirect("./Jefatura/InicioJefatura.jsp");
                          break;                         
                      case 2:
-                         response.sendRedirect("VistaSecretario.jsp");
+                         response.sendRedirect("./Secretaria/InicioSecretaria.jsp");
                          break;
                      case 3: 
-                         response.sendRedirect("VistaTecnico.jsp");
+                         response.sendRedirect("./Tecnico/InicioTecnico.jsp");
                          break;
                      case 4:
-                         response.sendRedirect("VistaPersonal.jsp");
+                         response.sendRedirect("./Personal/InicioPersonal.jsp");
                          break;
                      default:
                          response.sendRedirect("InicioSesion.jsp");

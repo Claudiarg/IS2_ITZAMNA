@@ -53,7 +53,8 @@ public class Equipo {
                 this.creado = true;
                 System.out.println("Si ingrese a while para asignar el id");
             }
-            this.idEquipo = equipo;        
+            this.idEquipo = equipo;  
+                System.out.println("creee el equipo.");
         c.desconectarBD();
     }
 

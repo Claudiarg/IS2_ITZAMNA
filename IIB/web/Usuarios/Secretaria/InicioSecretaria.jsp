@@ -54,52 +54,58 @@
                 <div id="content" > 
                     <div id="vertical-menu">
 
-                        <div id="menu1">
+                    <div id="menu1">
                             <ul>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Equipos</a>
                                     <ul>
                                         <li>
-                                            <a href="RegistrarEquipos.jsp">Registrar</a>
+                                            <a href="../Jefatura/RegistrarEquipos.jsp">Registrar </a>
                                         </li>
                                         <li>
-                                            <a href="ActualizarEquipos.jsp">Actualizar</a>
+                                            <a href="../Jefatura/ActualizarEquipos.jsp">Actualizar</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="nivel1 primera">
-                                    <a class="nivel1">Movimientos</a>
-                                </li>
+                                
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Usuarios</a>
                                     <ul>
                                         <li>
-                                            <a  href="RegistrarUsuario.jsp">Registrar</a>
+                                            <a href="../Jefatura/RegistrarUsuarios.jsp">Registrar</a>
                                         </li>
                                         <li>
-                                            <a href="BajaUsuario.jsp" >Dar de Baja</a>
+                                            <a href="../Jefatura/BajaUsuarios.jsp">Dar de Baja</a>
                                         </li>
                                         <li>
-                                            <a href="ContraseniaUsuario.jsp">Nueva Contraseña</a>
+                                            <a href="../Jefatura/CambioContraseniaUsuario.jsp">Nueva Contraseña</a>
                                         </li>
                                     </ul>
-                                </li>                               
-                                <li class="nivel1 primera">
-                                    <a href="Consultas.jsp" class="nivel1">Consultas</a>
                                 </li>
                                 <li class="nivel1 primera">
-                                    <a href="CambiarContrasenia.jsp">Cambiar Contraseña</a>
+                                    <a class="nivel1">Catálogos</a>
+                                    <ul>
+                                        <li>
+                                            <a href="../Jefatura/AgregarCatalogo.jsp">Crear</a>
+                                        </li>
+                                        <li>
+                                            <a href="../Jefatura/consultarCatalogos.jsp">Consultar</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li class="nivel1 primera">
+                                    <a href="../Jefatura/CambioContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
                             </ul>
-                            
+
                         </div>
-                    </div>
 
 
 
                     <div id="main-content">	
 
-                        <h2>Bienvenido</h2>
+                        
                         
                     </div>
                 </div>

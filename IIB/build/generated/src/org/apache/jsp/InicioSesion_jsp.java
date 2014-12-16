@@ -84,7 +84,7 @@ public final class InicioSesion_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("            <div id=\"main-container\" class=\"container-fluid\" role=\"main\">\n");
       out.write("\n");
       out.write("                <div id=\"main-title\" class=\"page-header\">\n");
-      out.write("                    <h1><small>Inicio de Sesi&oacute;n</small> </h1>\n");
+      out.write("                    <h1 style=\"font-size: 28px\">Inicio de Sesi&oacute;n </h1>\n");
       out.write("                </div>\n");
       out.write("\n");
       out.write("                <div id=\"content\"> \n");
@@ -111,17 +111,17 @@ public final class InicioSesion_jsp extends org.apache.jasper.runtime.HttpJspBas
                             }
                         
       out.write("\n");
-      out.write("                        <form class=\"form-horizontal\" role=\"form\" action=\"validadorSesion.jsp\" method=\"post\">\n");
-      out.write("                            <div class=\"form-group\">\n");
-      out.write("                                <label for=\"inputEmail3\" class=\"col-sm-2 control-label\">Correo</label>\n");
+      out.write("                        <form style=\"margin-left: 192px\" class=\"form-horizontal\" role=\"form\" action=\"validadorSesion.jsp\" method=\"post\">\n");
+      out.write("                            <div   class=\"form-group\">\n");
+      out.write("                                <label style=\"margin-left: -28px;\" for=\"inputEmail3\" class=\"col-sm-2 control-label\">Correo</label>\n");
       out.write("                                <div class=\"col-sm-10\">\n");
-      out.write("                                    <input pattern=\"[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}\" type=\"email\" name=\"correo\" class=\"form-control\" id=\"inputEmail3\" required>\n");
+      out.write("                                    <input style=\"width: 380px\" pattern=\"[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}\" type=\"email\" name=\"correo\" class=\"form-control\" id=\"inputEmail3\" required>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
-      out.write("                            <div class=\"form-group\">\n");
-      out.write("                                <label for=\"inputPassword3\" class=\"col-sm-2 control-label\">Contraseña</label>\n");
+      out.write("                            <div  class=\"form-group\">\n");
+      out.write("                                <label style=\"margin-left: -27px;\" class=\"col-sm-2 control-label\">Contraseña</label>\n");
       out.write("                                <div class=\"col-sm-10\">\n");
-      out.write("                                    <input type=\"password\" name=\"contrasenia\" class=\"form-control\" id=\"inputPassword3\" required>\n");
+      out.write("                                    <input style=\"width: 380px\" type=\"password\" name=\"contrasenia\" class=\"form-control\" id=\"inputPassword3\" required>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"form-group\">\n");
@@ -130,7 +130,7 @@ public final class InicioSesion_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                            </div>\n");
       out.write("                            <div class=\"form-group\">\n");
       out.write("                                <div class=\"col-sm-offset-2 col-sm-10\">\n");
-      out.write("                                    <button type=\"submit\" class=\"btn btn-default\">Entrar</button>\n");
+      out.write("                                    <button  style=\"margin-left: 286px;\" type=\"submit\" class=\"btn btn-default\">Entrar</button>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
       out.write("                        </form>\n");

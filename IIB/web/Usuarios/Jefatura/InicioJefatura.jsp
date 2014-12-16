@@ -38,8 +38,8 @@
         <div id="menu" class="navbar">
             <div class="container-fluid" role="navigation">
                 <form method="post" action="../../cerrarSesion.jsp">               
-                       <button type="submit" id="cerrarS">Salir</button>                                 
-                   </form>                    
+                    <button type="submit" id="cerrarS">Salir</button>                                 
+                </form>                    
             </div>
         </div>
 
@@ -48,7 +48,7 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Jefatura de departamento.</small> </h1>
+                    <h1 class="titulo"><small>Jefatura de departamento</small> </h1>
                 </div>
 
                 <div id="content" > 
@@ -105,7 +105,7 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
-                                                                        <ul>
+                                    <ul>
                                         <li>
                                             <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
                                         </li>
@@ -121,7 +121,7 @@
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
                                 </li>
                             </ul>
-                            
+
                         </div>
                     </div>
 
@@ -129,9 +129,17 @@
 
                     <div id="main-content">	
 
-                        <h2>Bienvenido</h2>
+                        <h2 id="bienvenido">Bienvenido</h2>
+                        <div id="principal">
+                            <p>Sistema realizado por las alumnas:<br><br>
+                                *Hermosillo Alfonso Elizabeth<br>
+                                *Ramírez García Claudia Ivette<br>
+                                *Valdivia Carbonell Mariana<br><br>                            
+                                en el curso de Ingeniería de Software II impartido por la profesora<br>
+                                María Guadalupe Elena Ibargüengoitia González</p>
+                        </div>
 
-                        
+
                     </div>
                 </div>
 

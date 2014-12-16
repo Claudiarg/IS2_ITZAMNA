@@ -52,11 +52,11 @@
             <div id="main-container" class="container-fluid" role="main">
 
                 <div id="main-title" class="page-header">
-                    <h1><small>Jefatura de departamento.</small> </h1>
+                    
                 </div>
 
                 <div id="content" > 
-                    <div id="vertical-menu">
+                                        <div id="vertical-menu">
 
                         <div id="menu1">
                             <ul>
@@ -73,6 +73,14 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Movimientos</a>
+                                    <ul>
+                                        <li>
+                                            <a href="RegistrarMovimiento.jsp">Registrar movimiento</a>
+                                        </li>
+                                        <li>
+                                            <a href="AsignarEquipo.jsp">Asignar equipo (Alta)</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Usuarios</a>
@@ -101,6 +109,17 @@
                                 </li>
                                 <li class="nivel1 primera">
                                     <a class="nivel1">Consultas</a>
+                                                                        <ul>
+                                        <li>
+                                            <a href="ConsultaEstadoActual.jsp">Por estado actual</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaSistemaOperativo.jsp">Por sistema operativo</a>
+                                        </li>
+                                        <li>
+                                            <a href="ConsultaPorCatalogo.jsp">Por catálogo</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="nivel1 primera">
                                     <a href="CambioContrasenia.jsp">Cambiar Contraseña</a>
@@ -114,8 +133,8 @@
 
                     <div id="main-content">	
 
-                        <h2>Actualizar equipos.</h2>
-                        <p>Ingresa el número de inventario del departamento de 
+                        <h2 id="bienvenido">Actualizar equipos.</h2>
+                        <p style="text-align: center">Ingresa el número de inventario del departamento de 
                             informática.</p>  
                         <%if (request.getParameter("error") != null) { 
                                String error = request.getParameter("error");
@@ -136,8 +155,8 @@
                             }                                                                                        
                          %>                        	                                                        
                         <form action="ActualizarEquiposC.jsp" method="post">                           
-                                <input type="text" class="input-group input-group-sm" name="numI" style="width : 100px" required>
-                                <button class="btn btn-default" type="submit">Buscar</button>                            
+                                <input type="text" class="input-group input-group-sm" name="numI" style="width : 100px;margin-left: 352px;" required>
+                                <button style="margin-left: 367px; margin-top: 20px" class="btn btn-default" type="submit">Buscar</button>                            
                         </form>                         
                         
                     </div>
